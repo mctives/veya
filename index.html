@@ -286,13 +286,9 @@ textarea{
   background:
 
     linear-gradient(
-
       to bottom,
-
       rgba(0,0,0,.65),
-
       transparent
-
     );
 
 }
@@ -371,15 +367,10 @@ textarea{
   background:
 
     linear-gradient(
-
       to top,
-
       rgba(0,0,0,.78),
-
       rgba(0,0,0,.08) 50%,
-
       rgba(0,0,0,.16)
-
     );
 
   pointer-events:none;
@@ -547,6 +538,7 @@ textarea{
   position:absolute;
 
   top:
+
     calc(
       env(safe-area-inset-top)
       + 64px
@@ -1012,7 +1004,7 @@ textarea{
 }
 
 
-/* COMMENTS + MENU */
+/* COMMENTS + MENUS */
 
 .sheet{
 
@@ -1365,8 +1357,7 @@ class="muted"
 style="margin-top:7px">
 
 Real DMs are the next bundle.
-Blocking already affects the FYP
-in this build.
+Blocking already affects the FYP.
 
 </div>
 
@@ -1454,8 +1445,7 @@ Upload to Veya
 id="uploadStatus"
 class="status">
 
-New posts are held for safety review
-before appearing publicly.
+New posts are held for safety review before appearing publicly.
 
 </div>
 
@@ -1721,8 +1711,10 @@ class="toast">
 
 <script>
 
+
 const URL =
   'https://bhobavvpijjtnmemubik.supabase.co';
+
 
 const KEY =
   'sb_publishable_lgAvXhpUqb8OFrEisv-Z3Q_TFDhWp_p';
@@ -1742,6 +1734,10 @@ let user =
 
 
 let token =
+  null;
+
+
+let refreshTimer =
   null;
 
 
@@ -1788,6 +1784,284 @@ let menuVideo =
 let selectedFile =
   null;
 
+
+/* ======================
+   SESSION REFRESH
+====================== */
+
+
+async function refreshSession(){
+
+  const refreshToken =
+    localStorage.getItem(
+      'veya_refresh_token'
+    );
+
+
+  if(
+    !refreshToken
+  ){
+
+    return false;
+
+  }
+
+
+  try{
+
+
+    const response =
+      await fetch(
+
+        URL +
+        '/auth/v1/token?grant_type=refresh_token',
+
+        {
+
+          method:
+            'POST',
+
+          headers:{
+
+            apikey:
+              KEY,
+
+            'Content-Type':
+              'application/json'
+
+          },
+
+          body:
+            JSON.stringify({
+
+              refresh_token:
+                refreshToken
+
+            })
+
+        }
+
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      !response.ok
+    ){
+
+      throw new Error(
+
+        data.error_description ||
+
+        data.message ||
+
+        data.msg ||
+
+        'Session refresh failed'
+
+      );
+
+    }
+
+
+    token =
+      data.access_token;
+
+
+    if(
+      data.user
+    ){
+
+      user =
+        data.user;
+
+    }
+
+
+    localStorage.setItem(
+
+      'veya_token',
+
+      data.access_token
+
+    );
+
+
+    if(
+      data.refresh_token
+    ){
+
+      localStorage.setItem(
+
+        'veya_refresh_token',
+
+        data.refresh_token
+
+      );
+
+    }
+
+
+    if(
+      data.expires_at
+    ){
+
+      localStorage.setItem(
+
+        'veya_expires_at',
+
+        String(
+          data.expires_at
+        )
+
+      );
+
+    }
+
+
+    if(
+      data.user
+    ){
+
+      localStorage.setItem(
+
+        'veya_user',
+
+        JSON.stringify(
+          data.user
+        )
+
+      );
+
+    }
+
+
+    return true;
+
+
+  }
+
+  catch(
+    error
+  ){
+
+
+    console.log(
+
+      'Session refresh failed:',
+
+      error
+
+    );
+
+
+    return false;
+
+  }
+
+}
+
+
+
+async function ensureFreshSession(){
+
+  const expiresAt =
+    Number(
+
+      localStorage.getItem(
+        'veya_expires_at'
+      )
+
+      ||
+
+      0
+
+    );
+
+
+  const now =
+    Math.floor(
+      Date.now() / 1000
+    );
+
+
+  /*
+    Refresh the token when it
+    has less than 2 minutes left.
+  */
+
+  if(
+
+    !token
+
+    ||
+
+    !expiresAt
+
+    ||
+
+    expiresAt - now < 120
+
+  ){
+
+    return await refreshSession();
+
+  }
+
+
+  return true;
+
+}
+
+
+
+function startSessionRefreshLoop(){
+
+  if(
+    refreshTimer
+  ){
+
+    clearInterval(
+      refreshTimer
+    );
+
+  }
+
+
+  refreshTimer =
+    setInterval(
+
+      async () =>{
+
+        const fresh =
+          await ensureFreshSession();
+
+
+        if(
+          !fresh
+        ){
+
+          console.log(
+            'Unable to refresh Veya session.'
+          );
+
+        }
+
+      },
+
+      60000
+
+    );
+
+}
+
+
+/* ======================
+   API HELPERS
+====================== */
 
 
 function headers(
@@ -1905,6 +2179,10 @@ function authMsg(
 
 }
 
+
+/* ======================
+   AUTH
+====================== */
 
 
 function setAuthMode(
@@ -2287,7 +2565,7 @@ async function login(){
       'veya_user',
 
       JSON.stringify(
-        user
+        data.user
       )
 
     );
@@ -2297,7 +2575,27 @@ async function login(){
 
       'veya_token',
 
-      token
+      data.access_token
+
+    );
+
+
+    localStorage.setItem(
+
+      'veya_refresh_token',
+
+      data.refresh_token
+
+    );
+
+
+    localStorage.setItem(
+
+      'veya_expires_at',
+
+      String(
+        data.expires_at || 0
+      )
 
     );
 
@@ -2342,8 +2640,51 @@ $('authButton').onclick =
       : login();
 
 
+/* ======================
+   OPEN APP
+====================== */
+
 
 async function openApp(){
+
+  const fresh =
+    await ensureFreshSession();
+
+
+  if(
+    !fresh
+  ){
+
+    clearStoredSession();
+
+    $('auth')
+      .classList
+      .remove(
+        'hidden'
+      );
+
+
+    $('app')
+      .classList
+      .add(
+        'hidden'
+      );
+
+
+    authMsg(
+
+      'Your session expired. Please log in again.'
+
+    );
+
+
+    return;
+
+  }
+
+
+  startSessionRefreshLoop();
+
 
   $('auth')
     .classList
@@ -2402,8 +2743,15 @@ async function openApp(){
 }
 
 
+/* ======================
+   USER STATE
+====================== */
+
 
 async function loadMyState(){
+
+  await ensureFreshSession();
+
 
   const [
 
@@ -2540,8 +2888,15 @@ async function loadMyState(){
 }
 
 
+/* ======================
+   FYP
+====================== */
+
 
 async function loadFyp(){
+
+  await ensureFreshSession();
+
 
   const response =
     await fetch(
@@ -2579,20 +2934,28 @@ async function loadFyp(){
     !response.ok
   ){
 
-    $('feed')
-      .innerHTML =
+    const errorText =
+      await response.text();
 
-      '<div class="empty">'
-      +
-      'Run the new Supabase migration first.'
-      +
-      '<br><br>'
-      +
-      esc(
-        await response.text()
-      )
-      +
-      '</div>';
+
+    $('feed')
+      .innerHTML = `
+
+      <div class="empty">
+
+      <div>
+
+      Could not load the Veya FYP.
+
+      <br><br>
+
+      ${esc(errorText)}
+
+      </div>
+
+      </div>
+
+      `;
 
 
     return;
@@ -3098,11 +3461,18 @@ function bindFeed(){
 }
 
 
+/* ======================
+   LIKES / SAVES
+====================== */
+
 
 async function toggleLike(
   id,
   button
 ){
+
+  await ensureFreshSession();
+
 
   if(
     likes.has(id)
@@ -3133,6 +3503,7 @@ async function toggleLike(
     ){
 
       likes.delete(id);
+
 
       button
       .querySelector(
@@ -3219,6 +3590,9 @@ async function toggleSave(
   id,
   button
 ){
+
+  await ensureFreshSession();
+
 
   if(
     saves.has(id)
@@ -3325,10 +3699,17 @@ async function toggleSave(
 }
 
 
+/* ======================
+   SHARES
+====================== */
+
 
 async function shareVideo(
   id
 ){
+
+  await ensureFreshSession();
+
 
   await fetch(
 
@@ -3424,6 +3805,10 @@ async function shareVideo(
 }
 
 
+/* ======================
+   ALGORITHM EVENTS
+====================== */
+
 
 async function recordSignal(
 
@@ -3436,6 +3821,9 @@ async function recordSignal(
   completion_percent=0
 
 ){
+
+  await ensureFreshSession();
+
 
   const body = {
 
@@ -3495,10 +3883,17 @@ async function recordSignal(
 }
 
 
+/* ======================
+   COMMENTS
+====================== */
+
 
 async function openComments(
   id
 ){
+
+  await ensureFreshSession();
+
 
   currentCommentVideo =
     id;
@@ -3591,6 +3986,9 @@ $('sendComment').onclick =
   async () =>{
 
 
+    await ensureFreshSession();
+
+
     const body =
       $('commentInput')
       .value
@@ -3673,10 +4071,17 @@ $('sendComment').onclick =
   };
 
 
+/* ======================
+   CREATOR PROFILES
+====================== */
+
 
 async function openCreator(
   id
 ){
+
+  await ensureFreshSession();
+
 
   if(
     id === user.id
@@ -3834,6 +4239,9 @@ async function toggleFollow(
   id
 ){
 
+  await ensureFreshSession();
+
+
   if(
     follows.has(id)
   ){
@@ -3954,6 +4362,10 @@ async function toggleFollow(
 }
 
 
+/* ======================
+   REPORT / BLOCK
+====================== */
+
 
 function openVideoMenu(
   id
@@ -3996,6 +4408,9 @@ function openVideoMenu(
 
 $('reportButton').onclick =
   async () =>{
+
+
+    await ensureFreshSession();
 
 
     if(
@@ -4083,6 +4498,9 @@ $('blockButton').onclick =
   async () =>{
 
 
+    await ensureFreshSession();
+
+
     if(
       !menuVideo
       ||
@@ -4151,8 +4569,15 @@ $('blockButton').onclick =
   };
 
 
+/* ======================
+   OWN PROFILE
+====================== */
+
 
 async function loadOwnProfile(){
+
+  await ensureFreshSession();
+
 
   const response =
     await fetch(
@@ -4379,6 +4804,9 @@ function ownVideoMenu(
     async () =>{
 
 
+      await ensureFreshSession();
+
+
       const response =
         await fetch(
 
@@ -4467,6 +4895,10 @@ function ownVideoMenu(
 
 }
 
+
+/* ======================
+   WATCH TRACKING
+====================== */
 
 
 const observer =
@@ -4606,6 +5038,15 @@ async function recordExit(
   index
 ){
 
+  if(
+    !user
+  ){
+
+    return;
+
+  }
+
+
   const slide =
     document.querySelector(
 
@@ -4615,8 +5056,7 @@ async function recordExit(
 
 
   if(
-    !slide ||
-    !user
+    !slide
   ){
 
     return;
@@ -4714,6 +5154,9 @@ async function recordExit(
     ?.is_welcome
   ){
 
+    await ensureFreshSession();
+
+
     await fetch(
 
       URL +
@@ -4744,8 +5187,9 @@ async function recordExit(
 }
 
 
-
-/* UPLOAD */
+/* ======================
+   VIDEO UPLOAD
+====================== */
 
 
 $('videoFile').onchange =
@@ -4822,6 +5266,23 @@ $('uploadButton').onclick =
         'Confirm the no-nudity rule first'
 
       );
+
+    }
+
+
+    const fresh =
+      await ensureFreshSession();
+
+
+    if(
+      !fresh
+    ){
+
+      toast(
+        'Please log in again'
+      );
+
+      return;
 
     }
 
@@ -5096,6 +5557,10 @@ $('uploadButton').onclick =
   };
 
 
+/* ======================
+   PANELS
+====================== */
+
 
 function showPanel(
   panel
@@ -5327,24 +5792,69 @@ document
 );
 
 
+/* ======================
+   LOGOUT
+====================== */
+
+
+function clearStoredSession(){
+
+  localStorage.removeItem(
+    'veya_user'
+  );
+
+
+  localStorage.removeItem(
+    'veya_token'
+  );
+
+
+  localStorage.removeItem(
+    'veya_refresh_token'
+  );
+
+
+  localStorage.removeItem(
+    'veya_expires_at'
+  );
+
+
+  if(
+    refreshTimer
+  ){
+
+    clearInterval(
+      refreshTimer
+    );
+
+
+    refreshTimer =
+      null;
+
+  }
+
+}
+
+
 
 $('logoutButton').onclick =
-  () =>{
+  async () =>{
 
 
-    recordExit(
-      currentIndex
-    );
+    try{
+
+      await recordExit(
+        currentIndex
+      );
+
+    }
+
+    catch(
+      error
+    ){}
 
 
-    localStorage.removeItem(
-      'veya_user'
-    );
-
-
-    localStorage.removeItem(
-      'veya_token'
-    );
+    clearStoredSession();
 
 
     location.reload();
@@ -5352,45 +5862,94 @@ $('logoutButton').onclick =
   };
 
 
+/* ======================
+   START VEYA
+====================== */
 
-try{
+
+async function startVeya(){
+
+  try{
 
 
-  user =
-    JSON.parse(
+    user =
+      JSON.parse(
 
+        localStorage.getItem(
+          'veya_user'
+        )
+
+        ||
+
+        'null'
+
+      );
+
+
+    token =
       localStorage.getItem(
-        'veya_user'
-      )
-
-      ||
-
-      'null'
-
-    );
+        'veya_token'
+      );
 
 
-  token =
-    localStorage.getItem(
-      'veya_token'
-    );
+    if(
+      !user ||
+      !token
+    ){
+
+      return;
+
+    }
 
 
-  if(
-    user &&
-    token
-  ){
+    const fresh =
+      await ensureFreshSession();
 
-    openApp();
+
+    if(
+      !fresh
+    ){
+
+      clearStoredSession();
+
+
+      authMsg(
+
+        'Please log in again to continue.'
+
+      );
+
+
+      return;
+
+    }
+
+
+    await openApp();
+
 
   }
 
+  catch(
+    error
+  ){
+
+
+    console.log(
+
+      'Veya startup error:',
+
+      error
+
+    );
+
+  }
 
 }
 
-catch(
-  error
-){}
+
+startVeya();
+
 
 </script>
 
