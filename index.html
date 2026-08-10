@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Veya">
+
+  <title>Veya</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #080808;
+      color: white;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        Arial,
+        sans-serif;
+    }
+
+    body {
+      min-height: 100dvh;
+    }
+
+    .page {
+      min-height: 100dvh;
+      padding:
+        calc(env(safe-area-inset-top) + 30px)
+        24px
+        calc(env(safe-area-inset-bottom) + 30px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo {
+      font-size: 62px;
+      font-weight: 900;
+      letter-spacing: -5px;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .tagline {
+      margin-top: 10px;
+      margin-bottom: 38px;
+      color: #8c8c8c;
+      font-size: 18px;
+    }
+
+    .tabs {
+      display: flex;
+      padding: 5px;
+      background: #151515;
+      border-radius: 17px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 14px;
+      border: 0;
+      border-radius: 13px;
+      background: transparent;
+      color: #777;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .tab.active {
+      background: white;
+      color: black;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 13px;
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid #292929;
+      background: #151515;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #777;
+    }
+
+    .primary {
+      width: 100%;
+      padding: 18px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 15px;
+      background: white;
+      color: black;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .primary:disabled {
+      opacity: .5;
+    }
+
+    #message {
+      display: none;
+      padding: 14px;
+      margin-bottom: 16px;
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 13px;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    #message.show {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      color: #555;
+      font-size: 13px;
+    }
+
+    #home {
+      display: none;
+    }
+
+    .welcome {
+      margin-top: 70px;
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .muted {
+      margin-top: 8px;
+      color: #888;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .card {
+      margin-top: 30px;
+      padding: 22px;
+      border-radius: 21px;
+      background: #151515;
+      border: 1px solid #222;
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+    }
+
+    .logout {
+      width: 100%;
+      padding: 16px;
+      margin-top: 28px;
+      border-radius: 15px;
+      border: 1px solid #333;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <section id="auth">
+
+    <h1 class="logo">veya</h1>
+
+    <div class="tagline">
+      Discover. Share. Connect.
+    </div>
+
+    <div id="message"></div>
+
+    <div class="tabs">
+
+      <button
+        id="loginTab"
+        class="tab active">
+        Log In
+      </button>
+
+      <button
+        id="signupTab"
+        class="tab">
+        Sign Up
+      </button>
+
+    </div>
+
+    <input
+      id="username"
+      type="text"
+      placeholder="Username"
+      autocapitalize="none"
+      style="display:none">
+
+    <input
+      id="email"
+      type="email"
+      placeholder="Email"
+      autocapitalize="none">
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Password">
+
+    <button
+      id="submitButton"
+      class="primary">
+      Log In
+    </button>
+
+    <div class="footer">
+      Welcome to Veya.
+    </div>
+
+  </section>
+
+
+  <section id="home">
+
+    <h1 class="logo">veya</h1>
+
+    <div class="welcome">
+      Welcome to Veya.
+    </div>
+
+    <div class="muted">
+      Your account is connected to the real Veya database.
+    </div>
+
+    <div class="card">
+
+      <h2>For You</h2>
+
+      <div class="muted">
+        Your personalized video feed will appear here.
+      </div>
+
+    </div>
+
+    <button
+      id="logoutButton"
+      class="logout">
+      Log Out
+    </button>
+
+  </section>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL =
+  "https://bhobavvpijjtnmemubik.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_lgAvXhpUqb8OFrEisv-Z3Q_TFDhWp_p";
+
+
+let mode = "login";
+
+
+const loginTab =
+  document.getElementById("loginTab");
+
+const signupTab =
+  document.getElementById("signupTab");
+
+const usernameInput =
+  document.getElementById("username");
+
+const emailInput =
+  document.getElementById("email");
+
+const passwordInput =
+  document.getElementById("password");
+
+const submitButton =
+  document.getElementById("submitButton");
+
+const message =
+  document.getElementById("message");
+
+const auth =
+  document.getElementById("auth");
+
+const home =
+  document.getElementById("home");
+
+
+function showMessage(text, success = false) {
+
+  message.textContent = text;
+
+  message.style.color =
+    success ? "#b8f7c5" : "#ffd0d0";
+
+  message.classList.add("show");
+}
+
+
+function clearMessage() {
+  message.classList.remove("show");
+}
+
+
+function changeMode(newMode) {
+
+  mode = newMode;
+
+  clearMessage();
+
+  if (mode === "login") {
+
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+
+    usernameInput.style.display = "none";
+
+    submitButton.textContent = "Log In";
+
+  } else {
+
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+
+    usernameInput.style.display = "block";
+
+    submitButton.textContent =
+      "Create Account";
+  }
+}
+
+
+loginTab.onclick =
+  () => changeMode("login");
+
+signupTab.onclick =
+  () => changeMode("signup");
+
+
+async function signUp() {
+
+  const username =
+    usernameInput.value.trim();
+
+  const email =
+    emailInput.value.trim();
+
+  const password =
+    passwordInput.value;
+
+
+  if (!username || !email || !password) {
+
+    showMessage(
+      "Enter a username, email, and password."
+    );
+
+    return;
+  }
+
+
+  if (password.length < 6) {
+
+    showMessage(
+      "Password must be at least 6 characters."
+    );
+
+    return;
+  }
+
+
+  submitButton.disabled = true;
+
+  submitButton.textContent =
+    "Creating Account...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        SUPABASE_URL + "/auth/v1/signup",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+
+            "apikey":
+              SUPABASE_KEY
+          },
+
+          body: JSON.stringify({
+            email: email,
+            password: password,
+
+            data: {
+              username: username
+            }
+          })
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.message ||
+        data.msg ||
+        "Unable to create account."
+      );
+    }
+
+
+    changeMode("login");
+
+    showMessage(
+      "Account created! Check your email and tap the confirmation link. Then return to Veya and log in.",
+      true
+    );
+
+  }
+
+  catch (error) {
+
+    showMessage(error.message);
+  }
+
+  finally {
+
+    submitButton.disabled = false;
+
+    submitButton.textContent =
+      mode === "login"
+      ? "Log In"
+      : "Create Account";
+  }
+}
+
+
+async function createProfile(
+  user,
+  token
+) {
+
+  const username =
+    user.user_metadata?.username ||
+    user.email.split("@")[0];
+
+
+  try {
+
+    await fetch(
+      SUPABASE_URL +
+      "/rest/v1/profiles",
+
+      {
+        method: "POST",
+
+        headers: {
+
+          "Content-Type":
+            "application/json",
+
+          "apikey":
+            SUPABASE_KEY,
+
+          "Authorization":
+            "Bearer " + token,
+
+          "Prefer":
+            "return=minimal"
+        },
+
+        body: JSON.stringify({
+
+          id:
+            user.id,
+
+          username:
+            username,
+
+          display_name:
+            username
+
+        })
+      }
+    );
+
+  } catch (error) {
+
+    console.log(
+      "Profile creation:",
+      error
+    );
+  }
+}
+
+
+async function logIn() {
+
+  const email =
+    emailInput.value.trim();
+
+  const password =
+    passwordInput.value;
+
+
+  if (!email || !password) {
+
+    showMessage(
+      "Enter your email and password."
+    );
+
+    return;
+  }
+
+
+  submitButton.disabled = true;
+
+  submitButton.textContent =
+    "Logging In...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        SUPABASE_URL +
+        "/auth/v1/token?grant_type=password",
+
+        {
+          method: "POST",
+
+          headers: {
+
+            "Content-Type":
+              "application/json",
+
+            "apikey":
+              SUPABASE_KEY
+
+          },
+
+          body: JSON.stringify({
+
+            email:
+              email,
+
+            password:
+              password
+
+          })
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error_description ||
+        data.message ||
+        data.msg ||
+        "Unable to log in."
+      );
+    }
+
+
+    localStorage.setItem(
+      "veya_token",
+      data.access_token
+    );
+
+
+    localStorage.setItem(
+      "veya_user",
+      JSON.stringify(data.user)
+    );
+
+
+    await createProfile(
+      data.user,
+      data.access_token
+    );
+
+
+    openHome();
+
+  }
+
+  catch (error) {
+
+    showMessage(error.message);
+
+  }
+
+  finally {
+
+    submitButton.disabled = false;
+
+    submitButton.textContent =
+      "Log In";
+  }
+}
+
+
+function openHome() {
+
+  auth.style.display =
+    "none";
+
+  home.style.display =
+    "block";
+}
+
+
+function logOut() {
+
+  localStorage.removeItem(
+    "veya_token"
+  );
+
+  localStorage.removeItem(
+    "veya_user"
+  );
+
+  home.style.display =
+    "none";
+
+  auth.style.display =
+    "block";
+
+  changeMode("login");
+}
+
+
+submitButton.onclick =
+  () => {
+
+    if (mode === "signup") {
+      signUp();
+    } else {
+      logIn();
+    }
+
+  };
+
+
+document
+  .getElementById("logoutButton")
+  .onclick =
+  logOut;
+
+
+const savedToken =
+  localStorage.getItem(
+    "veya_token"
+  );
+
+
+if (savedToken) {
+  openHome();
+}
+
+</script>
+
+</body>
+</html>
