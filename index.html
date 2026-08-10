@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -9,9 +8,7 @@
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 
-<meta
-  name="theme-color"
-  content="#000">
+<meta name="theme-color" content="#000">
 
 <meta
   name="apple-mobile-web-app-capable"
@@ -41,14 +38,12 @@ body{
   height:100%;
   background:#000;
   color:#fff;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
     "SF Pro Display",
     "Segoe UI",
     sans-serif;
-
   overflow:hidden;
 }
 
@@ -58,1144 +53,810 @@ textarea{
   font:inherit;
 }
 
+button{
+  cursor:pointer;
+}
+
 .hidden{
   display:none!important;
 }
 
 
-/* LOGIN */
+/* AUTH */
 
 #auth{
-
   height:100dvh;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   padding:
-
-    calc(
-      env(safe-area-inset-top)
-      + 24px
-    )
-
+    calc(env(safe-area-inset-top) + 24px)
     24px
-
-    calc(
-      env(safe-area-inset-bottom)
-      + 24px
-    );
-
+    calc(env(safe-area-inset-bottom) + 24px);
 }
 
 .authbox{
-
   width:100%;
-
   max-width:520px;
-
 }
 
 .logo{
-
   font-size:58px;
-
   font-weight:950;
-
   letter-spacing:-5px;
-
   line-height:.9;
-
 }
 
 .tag{
-
   color:#888;
-
   margin:12px 0 32px;
-
   font-size:17px;
-
 }
 
 .tabs{
-
   display:flex;
-
   background:#151515;
-
   padding:4px;
-
   border-radius:16px;
-
   margin-bottom:15px;
-
 }
 
 .tab{
-
   flex:1;
-
   border:0;
-
   background:none;
-
   color:#777;
-
   padding:13px;
-
   border-radius:13px;
-
   font-weight:800;
-
 }
 
 .tab.active{
-
   background:#fff;
-
   color:#000;
-
 }
 
 .field{
-
   width:100%;
-
   padding:17px;
-
   border:1px solid #2c2c2c;
-
   border-radius:15px;
-
   background:#151515;
-
   color:#fff;
-
   margin-bottom:12px;
-
   outline:none;
-
 }
 
 .primary{
-
   width:100%;
-
   border:0;
-
   border-radius:15px;
-
   padding:17px;
-
   background:#fff;
-
   color:#000;
-
   font-weight:900;
-
 }
 
-.primary:disabled{
+.secondary{
+  width:100%;
+  border:1px solid #333;
+  border-radius:15px;
+  padding:15px;
+  background:#151515;
+  color:#fff;
+  font-weight:850;
+}
 
+.primary:disabled,
+.secondary:disabled{
   opacity:.45;
-
 }
 
 .msg{
-
   display:none;
-
   background:#151515;
-
   border:1px solid #2a2a2a;
-
   border-radius:13px;
-
   padding:13px;
-
   margin-bottom:14px;
-
   line-height:1.4;
-
   font-size:14px;
-
 }
 
 .msg.show{
-
   display:block;
-
 }
 
 .small{
-
   color:#555;
-
   text-align:center;
-
   font-size:12px;
-
   margin-top:18px;
-
 }
 
 
 /* APP */
 
 #app{
-
   height:100dvh;
-
   position:relative;
-
 }
 
 .topbar{
-
   position:absolute;
-
   z-index:20;
-
   top:0;
-
   left:0;
-
   right:0;
-
   padding:
-
-    calc(
-      env(safe-area-inset-top)
-      + 10px
-    )
-
+    calc(env(safe-area-inset-top) + 10px)
     16px
-
     12px;
-
   display:flex;
-
   justify-content:center;
-
   gap:25px;
-
   background:
-
     linear-gradient(
       to bottom,
       rgba(0,0,0,.65),
       transparent
     );
-
 }
 
 .topbar button{
-
   border:0;
-
   background:none;
-
   color:#999;
-
   font-weight:850;
-
   font-size:16px;
-
 }
 
 .topbar .active{
-
   color:#fff;
-
 }
 
 
 /* FYP */
 
 .feed{
-
   height:100dvh;
-
   overflow-y:auto;
-
   scroll-snap-type:y mandatory;
-
   -webkit-overflow-scrolling:touch;
-
 }
 
 .slide{
-
   height:100dvh;
-
   position:relative;
-
   scroll-snap-align:start;
-
   background:#111;
-
   overflow:hidden;
-
 }
 
 .slide video{
-
   position:absolute;
-
   inset:0;
-
   width:100%;
-
   height:100%;
-
   object-fit:cover;
-
   background:#111;
-
 }
 
 .shade{
-
   position:absolute;
-
   inset:0;
-
   background:
-
     linear-gradient(
       to top,
       rgba(0,0,0,.78),
       rgba(0,0,0,.08) 50%,
       rgba(0,0,0,.16)
     );
-
   pointer-events:none;
-
 }
 
 .meta{
-
   position:absolute;
-
   left:15px;
-
   right:82px;
-
   bottom:
-
-    calc(
-      env(safe-area-inset-bottom)
-      + 82px
-    );
-
+    calc(env(safe-area-inset-bottom) + 82px);
   z-index:6;
-
-  text-shadow:
-    0 1px 4px #000;
-
+  text-shadow:0 1px 4px #000;
 }
 
 .userline{
-
   font-size:17px;
-
   font-weight:900;
-
   margin-bottom:7px;
-
 }
 
 .caption{
-
   font-size:15px;
-
   line-height:1.35;
-
 }
 
 .badge{
-
   display:inline-block;
-
   margin-top:9px;
-
   padding:5px 8px;
-
   border-radius:999px;
-
-  background:
-    rgba(0,0,0,.48);
-
-  border:
-    1px solid
-    rgba(255,255,255,.18);
-
+  background:rgba(0,0,0,.48);
+  border:1px solid rgba(255,255,255,.18);
   font-size:10px;
-
   color:#ddd;
-
 }
 
 .actions{
-
   position:absolute;
-
   right:9px;
-
   bottom:
-
-    calc(
-      env(safe-area-inset-bottom)
-      + 80px
-    );
-
+    calc(env(safe-area-inset-bottom) + 80px);
   z-index:8;
-
   display:flex;
-
   flex-direction:column;
-
   gap:14px;
-
   align-items:center;
-
 }
 
 .action{
-
   border:0;
-
-  background:
-    rgba(0,0,0,.18);
-
+  background:rgba(0,0,0,.18);
   color:#fff;
-
   width:58px;
-
   min-height:56px;
-
   border-radius:18px;
-
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
-
   justify-content:center;
-
-  backdrop-filter:
-    blur(5px);
-
+  backdrop-filter:blur(5px);
 }
 
 .icon{
-
   font-size:24px;
-
 }
 
 .count{
-
   font-size:10px;
-
   font-weight:800;
-
   margin-top:3px;
-
 }
 
 .avatar{
-
   width:48px;
-
   height:48px;
-
   border-radius:50%;
-
   border:2px solid #fff;
-
   background:#222;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   font-weight:900;
-
   font-size:18px;
-
 }
 
 .welcomeTag{
-
   position:absolute;
-
   top:
-
-    calc(
-      env(safe-area-inset-top)
-      + 64px
-    );
-
+    calc(env(safe-area-inset-top) + 64px);
   left:14px;
-
   z-index:9;
-
   background:#fff;
-
   color:#000;
-
   border-radius:999px;
-
   padding:7px 10px;
-
   font-size:11px;
-
   font-weight:900;
-
 }
 
 
-/* BOTTOM MENU */
+/* BOTTOM NAV */
 
 .bottomnav{
-
   position:absolute;
-
   z-index:30;
-
   left:0;
-
   right:0;
-
   bottom:0;
-
   height:
-
-    calc(
-      64px
-      + env(safe-area-inset-bottom)
-    );
-
+    calc(64px + env(safe-area-inset-bottom));
   padding-bottom:
     env(safe-area-inset-bottom);
-
-  background:
-    rgba(0,0,0,.86);
-
-  border-top:
-    1px solid
-    rgba(255,255,255,.1);
-
+  background:rgba(0,0,0,.86);
+  border-top:1px solid rgba(255,255,255,.1);
   display:flex;
-
   align-items:center;
-
   justify-content:space-around;
-
-  backdrop-filter:
-    blur(10px);
-
+  backdrop-filter:blur(10px);
 }
 
 .navbtn{
-
   border:0;
-
   background:none;
-
   color:#8c8c8c;
-
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
-
   gap:2px;
-
   font-size:10px;
-
   font-weight:800;
-
 }
 
 .navbtn span:first-child{
-
   font-size:22px;
-
 }
 
 .navbtn.active{
-
   color:#fff;
-
 }
 
 
 /* PANELS */
 
 .panel{
-
   position:absolute;
-
   z-index:45;
-
   inset:0;
-
   background:#080808;
-
   overflow:auto;
-
   padding:
-
-    calc(
-      env(safe-area-inset-top)
-      + 27px
-    )
-
+    calc(env(safe-area-inset-top) + 27px)
     18px
-
-    calc(
-      env(safe-area-inset-bottom)
-      + 88px
-    );
-
+    calc(env(safe-area-inset-bottom) + 88px);
 }
 
 .panel h1{
-
   margin:0 0 22px;
-
   font-size:31px;
-
 }
 
 .close{
-
   position:absolute;
-
   right:16px;
-
   top:
-
-    calc(
-      env(safe-area-inset-top)
-      + 20px
-    );
-
+    calc(env(safe-area-inset-top) + 20px);
   width:42px;
-
   height:42px;
-
   border-radius:50%;
-
   border:1px solid #333;
-
   background:#151515;
-
   color:#fff;
-
   font-size:21px;
-
 }
 
 .card{
-
   background:#151515;
-
   border:1px solid #252525;
-
   border-radius:20px;
-
   padding:17px;
-
   margin-bottom:14px;
-
 }
 
 .muted{
-
   color:#8a8a8a;
-
   line-height:1.45;
+}
 
+
+/* CHATS */
+
+.chatInbox{
+  padding-bottom:20px;
+}
+
+.chatRow{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:14px 2px;
+  border-bottom:1px solid #222;
+}
+
+.chatAvatar{
+  flex:0 0 50px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#202020;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:19px;
+}
+
+.chatInfo{
+  flex:1;
+  min-width:0;
+}
+
+.chatName{
+  font-weight:900;
+  font-size:16px;
+  margin-bottom:4px;
+}
+
+.chatPreview{
+  color:#8b8b8b;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:13px;
+}
+
+.chatTime{
+  color:#666;
+  font-size:10px;
+  flex:0 0 auto;
+}
+
+#chatPanel{
+  padding-bottom:
+    calc(env(safe-area-inset-bottom) + 84px);
+}
+
+.chatHeader{
+  position:sticky;
+  top:
+    calc(env(safe-area-inset-top) * -1);
+  z-index:5;
+  background:#080808;
+  padding-bottom:13px;
+  border-bottom:1px solid #202020;
+}
+
+.chatHeaderName{
+  font-size:24px;
+  font-weight:900;
+  padding-right:55px;
+}
+
+.messages{
+  padding:18px 0 110px;
+}
+
+.messageWrap{
+  display:flex;
+  margin:7px 0;
+}
+
+.messageWrap.mine{
+  justify-content:flex-end;
+}
+
+.messageBubble{
+  max-width:78%;
+  padding:11px 14px;
+  border-radius:18px;
+  line-height:1.35;
+  font-size:15px;
+  background:#1b1b1b;
+}
+
+.messageWrap.mine .messageBubble{
+  background:#fff;
+  color:#000;
+}
+
+.messageTime{
+  margin-top:4px;
+  font-size:9px;
+  opacity:.55;
+}
+
+.messageComposer{
+  position:fixed;
+  z-index:90;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:
+    10px
+    12px
+    calc(env(safe-area-inset-bottom) + 10px);
+  background:rgba(8,8,8,.95);
+  border-top:1px solid #222;
+  display:flex;
+  gap:8px;
+}
+
+.messageComposer input{
+  flex:1;
+  min-width:0;
+  background:#181818;
+  border:1px solid #303030;
+  border-radius:999px;
+  padding:13px 16px;
+  color:#fff;
+  outline:none;
+}
+
+.messageComposer button{
+  border:0;
+  border-radius:999px;
+  background:#fff;
+  color:#000;
+  padding:0 18px;
+  font-weight:900;
 }
 
 
 /* UPLOAD */
 
 .uploadlabel{
-
   display:block;
-
   padding:19px;
-
   text-align:center;
-
-  border:
-    1px dashed #444;
-
+  border:1px dashed #444;
   border-radius:16px;
-
   font-weight:850;
-
   background:#101010;
-
 }
 
 .preview{
-
   width:100%;
-
   max-height:42vh;
-
   object-fit:contain;
-
   background:#000;
-
   border-radius:16px;
-
   margin-top:14px;
-
   display:none;
-
 }
 
 .textarea{
-
   width:100%;
-
   min-height:92px;
-
   background:#101010;
-
   color:#fff;
-
-  border:
-    1px solid #2c2c2c;
-
+  border:1px solid #2c2c2c;
   border-radius:14px;
-
   padding:14px;
-
   resize:none;
-
   margin-top:13px;
-
   outline:none;
-
 }
 
 .rule{
-
   display:flex;
-
   gap:10px;
-
   align-items:flex-start;
-
   margin:13px 0;
-
   color:#bbb;
-
   font-size:13px;
-
   line-height:1.4;
-
 }
 
 .status{
-
   color:#999;
-
   font-size:13px;
-
   line-height:1.4;
-
   margin-top:12px;
-
 }
 
 .progress{
-
   height:7px;
-
   background:#262626;
-
   border-radius:999px;
-
   overflow:hidden;
-
   margin-top:10px;
-
 }
 
 .bar{
-
   width:0;
-
   height:100%;
-
   background:#fff;
-
   transition:.2s;
-
 }
 
 
 /* PROFILE */
 
 .profileHead{
-
   text-align:center;
-
   padding-top:22px;
-
 }
 
 .profileAvatar{
-
   width:92px;
-
   height:92px;
-
   border-radius:50%;
-
   background:#222;
-
   margin:auto;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   font-size:34px;
-
   font-weight:900;
-
 }
 
 .stats{
-
   display:flex;
-
   justify-content:center;
-
   gap:32px;
-
   margin:17px 0 25px;
-
 }
 
 .stat{
-
   text-align:center;
-
   color:#888;
-
   font-size:11px;
-
 }
 
 .stat b{
-
   display:block;
-
   color:#fff;
-
   font-size:18px;
+}
 
+.profileActions{
+  display:flex;
+  gap:9px;
+  margin:15px 0 25px;
+}
+
+.profileActions button{
+  flex:1;
 }
 
 .grid{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:3px;
-
 }
 
 .tile{
-
   aspect-ratio:9/16;
-
   background:#171717;
-
   position:relative;
-
   overflow:hidden;
-
 }
 
 .tile video{
-
   width:100%;
-
   height:100%;
-
   object-fit:cover;
-
 }
 
 .pinTag,
 .pendingTag{
-
   position:absolute;
-
   left:5px;
-
   top:5px;
-
-  background:
-    rgba(0,0,0,.7);
-
+  background:rgba(0,0,0,.7);
   border-radius:6px;
-
   padding:4px 5px;
-
   font-size:9px;
-
   font-weight:800;
-
 }
 
 .pendingTag{
-
   top:auto;
-
   bottom:5px;
-
 }
 
 .tilemenu{
-
   position:absolute;
-
   right:4px;
-
   top:4px;
-
   border:0;
-
-  background:
-    rgba(0,0,0,.65);
-
+  background:rgba(0,0,0,.65);
   color:#fff;
-
   border-radius:50%;
-
   width:28px;
-
   height:28px;
-
 }
 
 
-/* COMMENTS + MENUS */
+/* SHEETS */
 
 .sheet{
-
   position:absolute;
-
   z-index:70;
-
   left:0;
-
   right:0;
-
   bottom:0;
-
   background:#101010;
-
-  border-radius:
-    22px 22px 0 0;
-
+  border-radius:22px 22px 0 0;
   padding:
-
     18px
-
     16px
-
-    calc(
-      env(safe-area-inset-bottom)
-      + 18px
-    );
-
+    calc(env(safe-area-inset-bottom) + 18px);
   max-height:72vh;
-
   overflow:auto;
-
 }
 
 .sheet h2{
-
   margin:0 0 15px;
-
 }
 
 .commentrow{
-
   padding:10px 0;
-
-  border-bottom:
-    1px solid #222;
-
+  border-bottom:1px solid #222;
 }
 
 .commentbox{
-
   display:flex;
-
   gap:8px;
-
   margin-top:14px;
-
 }
 
 .commentbox input{
-
   flex:1;
-
   background:#191919;
-
   color:#fff;
-
   border:1px solid #333;
-
   border-radius:12px;
-
   padding:12px;
-
 }
 
 .commentbox button{
-
   border:0;
-
   background:#fff;
-
   color:#000;
-
   border-radius:12px;
-
   padding:0 16px;
-
   font-weight:900;
-
 }
 
 .menuBtn{
-
   width:100%;
-
   padding:15px;
-
   text-align:left;
-
   border:0;
-
-  border-bottom:
-    1px solid #242424;
-
+  border-bottom:1px solid #242424;
   background:none;
-
   color:#fff;
-
   font-weight:750;
-
 }
 
 .danger{
-
   color:#ff8f8f;
-
 }
 
 
 /* OTHER */
 
 .toast{
-
   position:absolute;
-
   z-index:100;
-
   left:50%;
-
-  transform:
-    translateX(-50%);
-
+  transform:translateX(-50%);
   bottom:
-
-    calc(
-      env(safe-area-inset-bottom)
-      + 84px
-    );
-
+    calc(env(safe-area-inset-bottom) + 84px);
   background:#fff;
-
   color:#000;
-
   padding:10px 14px;
-
   border-radius:999px;
-
   font-size:13px;
-
   font-weight:850;
-
   opacity:0;
-
   pointer-events:none;
-
   transition:.2s;
-
 }
 
 .toast.show{
-
   opacity:1;
-
 }
 
 .empty{
-
-  height:100dvh;
-
+  min-height:60vh;
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   text-align:center;
-
   padding:30px;
-
   color:#888;
-
 }
 
 </style>
 
 </head>
 
-
 <body>
 
+
+<!-- AUTH -->
 
 <section id="auth">
 
@@ -1263,6 +924,8 @@ Veya Safari beta
 
 </section>
 
+
+<!-- APP -->
 
 <section
 id="app"
@@ -1332,6 +995,8 @@ data-open="profile">
 </nav>
 
 
+<!-- CHATS INBOX -->
+
 <section
 id="chatsPanel"
 class="panel hidden">
@@ -1346,25 +1011,64 @@ data-close>
 Chats
 </h1>
 
-<div class="card">
-
-<b>
-Messaging foundation
-</b>
-
 <div
-class="muted"
-style="margin-top:7px">
+id="chatInbox"
+class="chatInbox">
 
-Real DMs are the next bundle.
-Blocking already affects the FYP.
-
+<div class="muted">
+Loading conversations...
 </div>
 
 </div>
 
 </section>
 
+
+<!-- ACTIVE CHAT -->
+
+<section
+id="chatPanel"
+class="panel hidden">
+
+<div class="chatHeader">
+
+<button
+id="chatBack"
+class="close">
+‹
+</button>
+
+<div
+id="chatHeaderName"
+class="chatHeaderName">
+Chat
+</div>
+
+</div>
+
+<div
+id="messages"
+class="messages">
+</div>
+
+<div class="messageComposer">
+
+<input
+id="messageInput"
+maxlength="1000"
+placeholder="Message...">
+
+<button
+id="sendMessage">
+Send
+</button>
+
+</div>
+
+</section>
+
+
+<!-- POST -->
 
 <section
 id="postPanel"
@@ -1379,7 +1083,6 @@ data-close>
 <h1>
 Post
 </h1>
-
 
 <div class="card">
 
@@ -1404,14 +1107,12 @@ playsinline
 controls>
 </video>
 
-
 <textarea
 id="caption"
 class="textarea"
 maxlength="300"
 placeholder="Write a caption...">
 </textarea>
-
 
 <label class="rule">
 
@@ -1422,15 +1123,12 @@ type="checkbox">
 <span>
 
 I confirm this video contains
-<b>
-no nudity or sexual content
-</b>
+<b>no nudity or sexual content</b>
 and follows Veya's safety rules.
 
 </span>
 
 </label>
-
 
 <button
 id="uploadButton"
@@ -1440,7 +1138,6 @@ Upload to Veya
 
 </button>
 
-
 <div
 id="uploadStatus"
 class="status">
@@ -1448,7 +1145,6 @@ class="status">
 New posts are held for safety review before appearing publicly.
 
 </div>
-
 
 <div class="progress">
 
@@ -1464,6 +1160,8 @@ class="bar">
 </section>
 
 
+<!-- OWN PROFILE -->
+
 <section
 id="profilePanel"
 class="panel hidden">
@@ -1474,7 +1172,6 @@ data-close>
 ×
 </button>
 
-
 <div class="profileHead">
 
 <div
@@ -1483,80 +1180,54 @@ class="profileAvatar">
 V
 </div>
 
-
 <h1
 id="profileName"
 style="margin:13px 0 4px">
-
 Veya User
-
 </h1>
-
 
 <div
 id="profileEmail"
 class="muted">
 </div>
 
-
 <div class="stats">
 
-
 <div class="stat">
-
-<b id="postsCount">
-0
-</b>
-
+<b id="postsCount">0</b>
 Posts
-
 </div>
 
-
 <div class="stat">
-
-<b id="followersCount">
-0
-</b>
-
+<b id="followersCount">0</b>
 Followers
-
 </div>
-
 
 <div class="stat">
-
-<b id="followingCount">
-0
-</b>
-
+<b id="followingCount">0</b>
 Following
-
-</div>
-
-
 </div>
 
 </div>
 
+</div>
 
 <div
 id="profileGrid"
 class="grid">
 </div>
 
-
 <button
 id="logoutButton"
 class="primary"
 style="margin-top:22px">
-
 Log Out
-
 </button>
 
 </section>
 
+
+<!-- CREATOR PROFILE -->
 
 <section
 id="creatorPanel"
@@ -1567,7 +1238,6 @@ class="close"
 data-close>
 ×
 </button>
-
 
 <div class="profileHead">
 
@@ -1580,31 +1250,36 @@ C
 <h1
 id="creatorName"
 style="margin:13px 0 4px">
-
 @creator
-
 </h1>
+
+<div class="profileActions">
 
 <button
 id="creatorFollow"
-class="primary"
-style="margin-top:15px">
-
+class="secondary">
 Follow
+</button>
 
+<button
+id="creatorMessage"
+class="primary">
+Message
 </button>
 
 </div>
 
+</div>
 
 <div
 id="creatorGrid"
-class="grid"
-style="margin-top:25px">
+class="grid">
 </div>
 
 </section>
 
+
+<!-- COMMENTS -->
 
 <section
 id="commentsSheet"
@@ -1639,6 +1314,8 @@ Send
 </section>
 
 
+<!-- VIDEO MENU -->
+
 <section
 id="menuSheet"
 class="sheet hidden">
@@ -1650,29 +1327,25 @@ Video options
 <button
 id="reportButton"
 class="menuBtn">
-
 Report video
-
 </button>
 
 <button
 id="blockButton"
 class="menuBtn danger">
-
 Block creator
-
 </button>
 
 <button
 class="menuBtn"
 data-sheet-close>
-
 Cancel
-
 </button>
 
 </section>
 
+
+<!-- OWN VIDEO MENU -->
 
 <section
 id="ownMenuSheet"
@@ -1685,17 +1358,13 @@ Your video
 <button
 id="pinButton"
 class="menuBtn">
-
 Pin to profile
-
 </button>
 
 <button
 class="menuBtn"
 data-sheet-close>
-
 Cancel
-
 </button>
 
 </section>
@@ -1711,84 +1380,71 @@ class="toast">
 
 <script>
 
+/* =========================
+   CONFIG
+========================= */
 
 const URL =
   'https://bhobavvpijjtnmemubik.supabase.co';
 
-
 const KEY =
   'sb_publishable_lgAvXhpUqb8OFrEisv-Z3Q_TFDhWp_p';
-
 
 const $ =
   id =>
     document.getElementById(id);
 
 
-let authMode =
-  'login';
+/* =========================
+   STATE
+========================= */
+
+let authMode = 'login';
+
+let user = null;
+
+let token = null;
+
+let refreshTimer = null;
+
+let chatTimer = null;
+
+let fyp = [];
+
+let ownPosts = [];
+
+let likes = new Set();
+
+let saves = new Set();
+
+let follows = new Set();
+
+let currentIndex = 0;
+
+let enteredAt = Date.now();
+
+let seenSession = new Set();
+
+let currentCommentVideo = null;
+
+let menuVideo = null;
+
+let selectedFile = null;
+
+let currentCreatorID = null;
+
+let currentConversationID = null;
+
+let currentChatUserID = null;
+
+let currentChatUsername = null;
+
+let lastMessageSignature = '';
 
 
-let user =
-  null;
-
-
-let token =
-  null;
-
-
-let refreshTimer =
-  null;
-
-
-let fyp =
-  [];
-
-
-let ownPosts =
-  [];
-
-
-let likes =
-  new Set();
-
-
-let saves =
-  new Set();
-
-
-let follows =
-  new Set();
-
-
-let currentIndex =
-  0;
-
-
-let enteredAt =
-  Date.now();
-
-
-let seenSession =
-  new Set();
-
-
-let currentCommentVideo =
-  null;
-
-
-let menuVideo =
-  null;
-
-
-let selectedFile =
-  null;
-
-
-/* ======================
-   SESSION REFRESH
-====================== */
-
+/* =========================
+   SESSION
+========================= */
 
 async function refreshSession(){
 
@@ -1797,360 +1453,230 @@ async function refreshSession(){
       'veya_refresh_token'
     );
 
-
-  if(
-    !refreshToken
-  ){
-
+  if(!refreshToken){
     return false;
-
   }
-
 
   try{
 
-
     const response =
       await fetch(
-
         URL +
         '/auth/v1/token?grant_type=refresh_token',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:{
-
-            apikey:
-              KEY,
-
-            'Content-Type':
-              'application/json'
-
+            apikey:KEY,
+            'Content-Type':'application/json'
           },
 
-          body:
-            JSON.stringify({
-
-              refresh_token:
-                refreshToken
-
-            })
-
+          body:JSON.stringify({
+            refresh_token:refreshToken
+          })
         }
-
       );
-
 
     const data =
       await response.json();
 
-
-    if(
-      !response.ok
-    ){
+    if(!response.ok){
 
       throw new Error(
-
         data.error_description ||
-
         data.message ||
-
         data.msg ||
-
         'Session refresh failed'
-
       );
 
     }
-
 
     token =
       data.access_token;
 
-
-    if(
-      data.user
-    ){
-
-      user =
-        data.user;
-
+    if(data.user){
+      user = data.user;
     }
-
 
     localStorage.setItem(
-
       'veya_token',
-
       data.access_token
-
     );
 
-
-    if(
-      data.refresh_token
-    ){
+    if(data.refresh_token){
 
       localStorage.setItem(
-
         'veya_refresh_token',
-
         data.refresh_token
-
       );
 
     }
 
-
-    if(
-      data.expires_at
-    ){
+    if(data.expires_at){
 
       localStorage.setItem(
-
         'veya_expires_at',
-
-        String(
-          data.expires_at
-        )
-
+        String(data.expires_at)
       );
 
     }
 
-
-    if(
-      data.user
-    ){
+    if(data.user){
 
       localStorage.setItem(
-
         'veya_user',
-
-        JSON.stringify(
-          data.user
-        )
-
+        JSON.stringify(data.user)
       );
 
     }
-
 
     return true;
 
-
   }
 
-  catch(
-    error
-  ){
-
+  catch(error){
 
     console.log(
-
-      'Session refresh failed:',
-
+      'Session refresh failed',
       error
-
     );
-
 
     return false;
 
   }
 
 }
-
 
 
 async function ensureFreshSession(){
 
   const expiresAt =
     Number(
-
       localStorage.getItem(
         'veya_expires_at'
-      )
-
-      ||
-
-      0
-
+      ) || 0
     );
-
 
   const now =
     Math.floor(
       Date.now() / 1000
     );
 
-
-  /*
-    Refresh the token when it
-    has less than 2 minutes left.
-  */
-
   if(
-
-    !token
-
-    ||
-
-    !expiresAt
-
-    ||
-
+    !token ||
+    !expiresAt ||
     expiresAt - now < 120
-
   ){
 
     return await refreshSession();
 
   }
 
-
   return true;
 
 }
 
 
-
 function startSessionRefreshLoop(){
 
-  if(
-    refreshTimer
-  ){
-
-    clearInterval(
-      refreshTimer
-    );
-
+  if(refreshTimer){
+    clearInterval(refreshTimer);
   }
-
 
   refreshTimer =
     setInterval(
-
-      async () =>{
-
-        const fresh =
-          await ensureFreshSession();
-
-
-        if(
-          !fresh
-        ){
-
-          console.log(
-            'Unable to refresh Veya session.'
-          );
-
-        }
-
+      async () => {
+        await ensureFreshSession();
       },
-
       60000
-
     );
 
 }
 
 
-/* ======================
-   API HELPERS
-====================== */
+function clearStoredSession(){
+
+  localStorage.removeItem(
+    'veya_user'
+  );
+
+  localStorage.removeItem(
+    'veya_token'
+  );
+
+  localStorage.removeItem(
+    'veya_refresh_token'
+  );
+
+  localStorage.removeItem(
+    'veya_expires_at'
+  );
+
+  if(refreshTimer){
+    clearInterval(refreshTimer);
+    refreshTimer = null;
+  }
+
+  stopChatPolling();
+
+}
 
 
-function headers(
-  extra={}
-){
+/* =========================
+   HELPERS
+========================= */
+
+function headers(extra={}){
 
   return {
-
-    apikey:
-      KEY,
-
+    apikey:KEY,
     Authorization:
       'Bearer ' + token,
-
     ...extra
-
   };
 
 }
 
 
-
-function toast(
-  text
-){
+function toast(text){
 
   const element =
     $('toast');
 
-
   element.textContent =
     text;
-
 
   element.classList.add(
     'show'
   );
 
-
   setTimeout(
-
-    () =>
+    () => {
       element.classList.remove(
         'show'
-      ),
-
-    1300
-
+      );
+    },
+    1400
   );
 
 }
 
 
+function esc(value=''){
 
-function esc(
-  value=''
-){
+  return String(value)
 
-  return String(
-    value
-  )
+    .replaceAll('&','&amp;')
 
-  .replaceAll(
-    '&',
-    '&amp;'
-  )
+    .replaceAll('<','&lt;')
 
-  .replaceAll(
-    '<',
-    '&lt;'
-  )
+    .replaceAll('>','&gt;')
 
-  .replaceAll(
-    '>',
-    '&gt;'
-  )
+    .replaceAll('"','&quot;')
 
-  .replaceAll(
-    '"',
-    '&quot;'
-  )
-
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
+    .replaceAll("'","&#039;");
 
 }
-
 
 
 function authMsg(
@@ -2161,16 +1687,13 @@ function authMsg(
   const element =
     $('authMsg');
 
-
   element.textContent =
     text;
-
 
   element.style.color =
     ok
       ? '#bff6ca'
       : '#ffd0d0';
-
 
   element.classList.toggle(
     'show',
@@ -2180,18 +1703,73 @@ function authMsg(
 }
 
 
-/* ======================
+function formatTime(value){
+
+  if(!value){
+    return '';
+  }
+
+  const date =
+    new Date(value);
+
+  const now =
+    new Date();
+
+  const sameDay =
+    date.toDateString()
+    ===
+    now.toDateString();
+
+  if(sameDay){
+
+    return date.toLocaleTimeString(
+      [],
+      {
+        hour:'numeric',
+        minute:'2-digit'
+      }
+    );
+
+  }
+
+  return date.toLocaleDateString(
+    [],
+    {
+      month:'short',
+      day:'numeric'
+    }
+  );
+
+}
+
+
+function hideMainPanels(){
+
+  [
+    'chatsPanel',
+    'chatPanel',
+    'postPanel',
+    'profilePanel',
+    'creatorPanel'
+  ]
+  .forEach(
+    id => {
+      $(id)
+      .classList
+      .add('hidden');
+    }
+  );
+
+}
+
+
+/* =========================
    AUTH
-====================== */
+========================= */
 
+function setAuthMode(mode){
 
-function setAuthMode(
-  mode
-){
-
-  authMode =
-    mode;
-
+  authMode = mode;
 
   $('loginTab')
     .classList
@@ -2200,14 +1778,12 @@ function setAuthMode(
       mode === 'login'
     );
 
-
   $('signupTab')
     .classList
     .toggle(
       'active',
       mode === 'signup'
     );
-
 
   $('username')
     .classList
@@ -2216,34 +1792,22 @@ function setAuthMode(
       mode !== 'signup'
     );
 
-
   $('authButton')
     .textContent =
-
-    mode === 'signup'
-      ? 'Create Account'
-      : 'Log In';
-
+      mode === 'signup'
+        ? 'Create Account'
+        : 'Log In';
 
   authMsg('');
 
 }
 
 
-
 $('loginTab').onclick =
-  () =>
-    setAuthMode(
-      'login'
-    );
-
+  () => setAuthMode('login');
 
 $('signupTab').onclick =
-  () =>
-    setAuthMode(
-      'signup'
-    );
-
+  () => setAuthMode('signup');
 
 
 async function signUp(){
@@ -2253,17 +1817,14 @@ async function signUp(){
       .value
       .trim();
 
-
   const email =
     $('email')
       .value
       .trim();
 
-
   const password =
     $('password')
       .value;
-
 
   if(
     !username ||
@@ -2272,116 +1833,69 @@ async function signUp(){
   ){
 
     return authMsg(
-
       'Enter a username, email, and password.'
-
     );
 
   }
 
-
-  if(
-    password.length < 6
-  ){
+  if(password.length < 6){
 
     return authMsg(
-
       'Password must be at least 6 characters.'
-
     );
 
   }
 
-
-  $('authButton')
-    .disabled =
+  $('authButton').disabled =
     true;
-
 
   try{
 
-
     const response =
       await fetch(
-
-        URL +
-        '/auth/v1/signup',
-
+        URL + '/auth/v1/signup',
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:{
-
-            apikey:
-              KEY,
-
+            apikey:KEY,
             'Content-Type':
               'application/json'
-
           },
 
-          body:
-            JSON.stringify({
-
-              email,
-
-              password,
-
-              data:{
-
-                username
-
-              }
-
-            })
-
+          body:JSON.stringify({
+            email,
+            password,
+            data:{
+              username
+            }
+          })
         }
-
       );
-
 
     const data =
       await response.json();
 
-
-    if(
-      !response.ok
-    ){
+    if(!response.ok){
 
       throw new Error(
-
         data.message ||
-
         data.msg ||
-
         'Unable to create account.'
-
       );
 
     }
 
-
-    setAuthMode(
-      'login'
-    );
-
+    setAuthMode('login');
 
     authMsg(
-
       'Account created. Confirm your email, then log in.',
-
       true
-
     );
-
 
   }
 
-  catch(
-    error
-  ){
+  catch(error){
 
     authMsg(
       error.message
@@ -2391,8 +1905,7 @@ async function signUp(){
 
   finally{
 
-    $('authButton')
-      .disabled =
+    $('authButton').disabled =
       false;
 
   }
@@ -2400,63 +1913,40 @@ async function signUp(){
 }
 
 
-
 async function ensureProfile(){
 
   const name =
-
     user?.user_metadata?.username
-
     ||
-
     (
       user?.email ||
       'user'
-    )
-    .split('@')[0];
-
+    ).split('@')[0];
 
   await fetch(
-
     URL +
     '/rest/v1/profiles',
-
     {
-
-      method:
-        'POST',
+      method:'POST',
 
       headers:
         headers({
-
           'Content-Type':
             'application/json',
 
           Prefer:
             'resolution=merge-duplicates,return=minimal'
-
         }),
 
-      body:
-        JSON.stringify({
-
-          id:
-            user.id,
-
-          username:
-            name,
-
-          display_name:
-            name
-
-        })
-
+      body:JSON.stringify({
+        id:user.id,
+        username:name,
+        display_name:name
+      })
     }
-
   );
 
 }
-
 
 
 async function login(){
@@ -2466,11 +1956,9 @@ async function login(){
       .value
       .trim();
 
-
   const password =
     $('password')
       .value;
-
 
   if(
     !email ||
@@ -2478,139 +1966,84 @@ async function login(){
   ){
 
     return authMsg(
-
       'Enter your email and password.'
-
     );
 
   }
 
-
-  $('authButton')
-    .disabled =
+  $('authButton').disabled =
     true;
-
 
   try{
 
-
     const response =
       await fetch(
-
         URL +
         '/auth/v1/token?grant_type=password',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:{
-
-            apikey:
-              KEY,
-
+            apikey:KEY,
             'Content-Type':
               'application/json'
-
           },
 
           body:
             JSON.stringify({
-
               email,
-
               password
-
             })
-
         }
-
       );
-
 
     const data =
       await response.json();
 
-
-    if(
-      !response.ok
-    ){
+    if(!response.ok){
 
       throw new Error(
-
         data.error_description ||
-
         data.message ||
-
         data.msg ||
-
         'Unable to log in.'
-
       );
 
     }
 
-
     user =
       data.user;
-
 
     token =
       data.access_token;
 
-
     localStorage.setItem(
-
       'veya_user',
-
-      JSON.stringify(
-        data.user
-      )
-
+      JSON.stringify(data.user)
     );
 
-
     localStorage.setItem(
-
       'veya_token',
-
       data.access_token
-
     );
 
-
     localStorage.setItem(
-
       'veya_refresh_token',
-
       data.refresh_token
-
     );
-
 
     localStorage.setItem(
-
       'veya_expires_at',
-
-      String(
-        data.expires_at || 0
-      )
-
+      String(data.expires_at || 0)
     );
-
 
     await ensureProfile();
 
-
     await openApp();
-
 
   }
 
-  catch(
-    error
-  ){
+  catch(error){
 
     authMsg(
       error.message
@@ -2620,8 +2053,7 @@ async function login(){
 
   finally{
 
-    $('authButton')
-      .disabled =
+    $('authButton').disabled =
       false;
 
   }
@@ -2629,258 +2061,174 @@ async function login(){
 }
 
 
-
 $('authButton').onclick =
-  () =>
+  () => {
 
-    authMode === 'signup'
+    if(authMode === 'signup'){
+      signUp();
+    }
+    else{
+      login();
+    }
 
-      ? signUp()
-
-      : login();
+  };
 
 
-/* ======================
+/* =========================
    OPEN APP
-====================== */
-
+========================= */
 
 async function openApp(){
 
   const fresh =
     await ensureFreshSession();
 
-
-  if(
-    !fresh
-  ){
+  if(!fresh){
 
     clearStoredSession();
 
-    $('auth')
-      .classList
-      .remove(
-        'hidden'
-      );
-
-
     $('app')
       .classList
-      .add(
-        'hidden'
-      );
+      .add('hidden');
 
+    $('auth')
+      .classList
+      .remove('hidden');
 
     authMsg(
-
       'Your session expired. Please log in again.'
-
     );
-
 
     return;
 
   }
 
-
   startSessionRefreshLoop();
-
 
   $('auth')
     .classList
-    .add(
-      'hidden'
-    );
-
+    .add('hidden');
 
   $('app')
     .classList
-    .remove(
-      'hidden'
-    );
-
+    .remove('hidden');
 
   const name =
-
     user?.user_metadata?.username
-
     ||
-
     'Veya User';
-
 
   $('profileName')
     .textContent =
-    name;
-
+      name;
 
   $('profileEmail')
     .textContent =
-    user?.email || '';
-
+      user?.email || '';
 
   $('profileAvatar')
     .textContent =
-
-    name[0]
-      ?.toUpperCase()
-
-    ||
-
-    'V';
-
+      name[0]?.toUpperCase()
+      ||
+      'V';
 
   await Promise.all([
-
     loadMyState(),
-
     loadFyp(),
-
     loadOwnProfile()
-
   ]);
 
 }
 
 
-/* ======================
+/* =========================
    USER STATE
-====================== */
-
+========================= */
 
 async function loadMyState(){
 
   await ensureFreshSession();
 
-
   const [
-
     likesResponse,
-
     savesResponse,
-
     followsResponse
-
   ] =
-
   await Promise.all([
 
-
     fetch(
-
       URL +
-
       '/rest/v1/likes?select=video_id&user_id=eq.'
-
       +
-
       user.id,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     ),
 
-
     fetch(
-
       URL +
-
       '/rest/v1/saves?select=video_id&user_id=eq.'
-
       +
-
       user.id,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     ),
 
-
     fetch(
-
       URL +
-
       '/rest/v1/follows?select=following_id&follower_id=eq.'
-
       +
-
       user.id,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     )
-
 
   ]);
 
-
-  if(
-    likesResponse.ok
-  ){
+  if(likesResponse.ok){
 
     likes =
       new Set(
-
         (
           await likesResponse.json()
         )
-
         .map(
           item =>
             item.video_id
         )
-
       );
 
   }
 
-
-  if(
-    savesResponse.ok
-  ){
+  if(savesResponse.ok){
 
     saves =
       new Set(
-
         (
           await savesResponse.json()
         )
-
         .map(
           item =>
             item.video_id
         )
-
       );
 
   }
 
-
-  if(
-    followsResponse.ok
-  ){
+  if(followsResponse.ok){
 
     follows =
       new Set(
-
         (
           await followsResponse.json()
         )
-
         .map(
           item =>
             item.following_id
         )
-
       );
 
   }
@@ -2888,144 +2236,100 @@ async function loadMyState(){
 }
 
 
-/* ======================
+/* =========================
    FYP
-====================== */
-
+========================= */
 
 async function loadFyp(){
 
   await ensureFreshSession();
 
-
   const response =
     await fetch(
-
       URL +
       '/rest/v1/rpc/get_veya_fyp',
-
       {
-
-        method:
-          'POST',
+        method:'POST',
 
         headers:
           headers({
-
             'Content-Type':
               'application/json'
-
           }),
 
-        body:
-          JSON.stringify({
-
-            p_limit:
-              50
-
-          })
-
+        body:JSON.stringify({
+          p_limit:50
+        })
       }
-
     );
 
-
-  if(
-    !response.ok
-  ){
+  if(!response.ok){
 
     const errorText =
       await response.text();
 
-
-    $('feed')
-      .innerHTML = `
+    $('feed').innerHTML = `
 
       <div class="empty">
 
-      <div>
+        <div>
 
-      Could not load the Veya FYP.
+          <b style="color:#fff">
+          Could not load Veya
+          </b>
 
-      <br><br>
+          <br><br>
 
-      ${esc(errorText)}
+          ${esc(errorText)}
+
+        </div>
 
       </div>
 
-      </div>
-
-      `;
-
+    `;
 
     return;
 
   }
 
-
   fyp =
     await response.json();
 
-
   const onboardingResponse =
     await fetch(
-
       URL +
-
       '/rest/v1/user_onboarding?select=welcome_seen&user_id=eq.'
-
       +
-
       user.id,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     );
 
-
   const onboarding =
-
     onboardingResponse.ok
-
       ? await onboardingResponse.json()
-
       : [];
 
-
   const welcomeSeen =
-
     onboarding[0]
       ?.welcome_seen === true;
 
-
-  if(
-    !welcomeSeen
-  ){
+  if(!welcomeSeen){
 
     const welcomeIndex =
-
       fyp.findIndex(
         video =>
           video.is_welcome
       );
 
+    if(welcomeIndex > 0){
 
-    if(
-      welcomeIndex > 0
-    ){
-
-      const [
-        welcomeVideo
-      ] =
-
+      const [welcomeVideo] =
         fyp.splice(
           welcomeIndex,
           1
         );
-
 
       fyp.unshift(
         welcomeVideo
@@ -3038,304 +2342,206 @@ async function loadFyp(){
   else{
 
     fyp.sort(
-
-      (
-        a,
-        b
-      ) =>
-
-        Number(
-          b.fyp_score
-        )
-
+      (a,b) =>
+        Number(b.fyp_score)
         -
-
-        Number(
-          a.fyp_score
-        )
-
+        Number(a.fyp_score)
     );
 
   }
-
 
   renderFeed();
 
 }
 
 
-
 function renderFeed(){
 
-  if(
-    !fyp.length
-  ){
+  if(!fyp.length){
 
-    $('feed')
-      .innerHTML = `
+    $('feed').innerHTML = `
 
       <div class="empty">
 
-      <div>
+        <div>
 
-      <b
-      style="
-      color:#fff;
-      font-size:23px;
-      ">
+          <b
+          style="
+          color:#fff;
+          font-size:23px;
+          ">
+          No approved videos yet
+          </b>
 
-      No approved videos yet
+          <br><br>
 
-      </b>
+          Upload a post and approve it after safety review.
 
-      <br><br>
-
-      Upload a post,
-      then approve it after safety review.
-
-      </div>
+        </div>
 
       </div>
 
-      `;
-
+    `;
 
     return;
 
   }
 
-
   $('feed').innerHTML =
-
     fyp
     .map(
-
-      (
-        video,
-        index
-      ) => `
-
+      (video,index) => `
 
       <article
-
       class="slide"
-
       data-index="${index}"
-
       data-id="${video.id}">
 
+        <video
+        src="${esc(video.video_url)}"
+        playsinline
+        loop
+        preload="metadata">
+        </video>
+
+        <div class="shade">
+        </div>
+
+        ${
+          video.is_welcome
+          ?
+          '<div class="welcomeTag">WELCOME TO VEYA</div>'
+          :
+          ''
+        }
+
+        <div class="meta">
+
+          <div
+          class="userline creatorLink"
+          data-creator="${video.creator_id}">
+            @${esc(video.username || 'creator')}
+          </div>
+
+          <div class="caption">
+            ${esc(video.caption || '')}
+          </div>
+
+          <div class="badge">
+            FYP ${Number(video.fyp_score || 0).toFixed(1)}
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+          class="action creatorLink"
+          data-creator="${video.creator_id}">
+
+            <div class="avatar">
+              ${esc(
+                (
+                  video.username ||
+                  'V'
+                )[0].toUpperCase()
+              )}
+            </div>
+
+            <span class="count">
+            Profile
+            </span>
+
+          </button>
+
+          <button
+          class="action likeBtn"
+          data-id="${video.id}">
+
+            <span class="icon">
+              ${
+                likes.has(video.id)
+                ? '♥'
+                : '♡'
+              }
+            </span>
+
+            <span class="count">
+            Like
+            </span>
+
+          </button>
+
+          <button
+          class="action commentBtn"
+          data-id="${video.id}">
+
+            <span class="icon">
+            ◯
+            </span>
+
+            <span class="count">
+            Comment
+            </span>
+
+          </button>
+
+          <button
+          class="action shareBtn"
+          data-id="${video.id}">
+
+            <span class="icon">
+            ↗
+            </span>
+
+            <span class="count">
+            Share
+            </span>
+
+          </button>
 
-      <video
+          <button
+          class="action saveBtn"
+          data-id="${video.id}">
 
-      src="${esc(video.video_url)}"
+            <span class="icon">
+              ${
+                saves.has(video.id)
+                ? '▣'
+                : '⌑'
+              }
+            </span>
 
-      playsinline
+            <span class="count">
+            Save
+            </span>
 
-      loop
+          </button>
 
-      preload="metadata">
+          <button
+          class="action moreBtn"
+          data-id="${video.id}">
 
-      </video>
+            <span class="icon">
+            •••
+            </span>
 
+          </button>
 
-      <div class="shade">
-      </div>
-
-
-      ${
-        video.is_welcome
-
-          ? '<div class="welcomeTag">WELCOME TO VEYA</div>'
-
-          : ''
-      }
-
-
-      <div class="meta">
-
-
-      <div
-
-      class="userline creatorLink"
-
-      data-creator="${video.creator_id}">
-
-      @${esc(video.username || 'creator')}
-
-      </div>
-
-
-      <div class="caption">
-
-      ${esc(video.caption || '')}
-
-      </div>
-
-
-      <div class="badge">
-
-      FYP
-      ${Number(video.fyp_score || 0).toFixed(1)}
-
-      </div>
-
-
-      </div>
-
-
-      <div class="actions">
-
-
-      <button
-
-      class="action creatorLink"
-
-      data-creator="${video.creator_id}">
-
-
-      <div class="avatar">
-
-      ${esc(
-        (
-          video.username ||
-          'V'
-        )[0]
-        .toUpperCase()
-      )}
-
-      </div>
-
-
-      <span class="count">
-      Profile
-      </span>
-
-      </button>
-
-
-      <button
-
-      class="action likeBtn"
-
-      data-id="${video.id}">
-
-
-      <span class="icon">
-
-      ${
-        likes.has(video.id)
-          ? '♥'
-          : '♡'
-      }
-
-      </span>
-
-
-      <span class="count">
-      Like
-      </span>
-
-      </button>
-
-
-      <button
-
-      class="action commentBtn"
-
-      data-id="${video.id}">
-
-
-      <span class="icon">
-      ◯
-      </span>
-
-
-      <span class="count">
-      Comment
-      </span>
-
-      </button>
-
-
-      <button
-
-      class="action shareBtn"
-
-      data-id="${video.id}">
-
-
-      <span class="icon">
-      ↗
-      </span>
-
-
-      <span class="count">
-      Share
-      </span>
-
-      </button>
-
-
-      <button
-
-      class="action saveBtn"
-
-      data-id="${video.id}">
-
-
-      <span class="icon">
-
-      ${
-        saves.has(video.id)
-          ? '▣'
-          : '⌑'
-      }
-
-      </span>
-
-
-      <span class="count">
-      Save
-      </span>
-
-      </button>
-
-
-      <button
-
-      class="action moreBtn"
-
-      data-id="${video.id}">
-
-
-      <span class="icon">
-      •••
-      </span>
-
-      </button>
-
-
-      </div>
-
+        </div>
 
       </article>
 
-
       `
-
     )
     .join('');
-
 
   bindFeed();
 
   observeSlides();
 
-
   setTimeout(
-
-    () =>
-
+    () => {
       document
       .querySelector(
         '.slide video'
@@ -3343,14 +2549,12 @@ function renderFeed(){
       ?.play()
       .catch(
         () => {}
-      ),
-
+      );
+    },
     200
-
   );
 
 }
-
 
 
 function bindFeed(){
@@ -3360,111 +2564,105 @@ function bindFeed(){
     '.likeBtn'
   )
   .forEach(
-
-    button =>
+    button => {
 
       button.onclick =
         () =>
           toggleLike(
             button.dataset.id,
             button
-          )
+          );
 
+    }
   );
-
 
   document
   .querySelectorAll(
     '.saveBtn'
   )
   .forEach(
-
-    button =>
+    button => {
 
       button.onclick =
         () =>
           toggleSave(
             button.dataset.id,
             button
-          )
+          );
 
+    }
   );
-
 
   document
   .querySelectorAll(
     '.commentBtn'
   )
   .forEach(
-
-    button =>
+    button => {
 
       button.onclick =
         () =>
           openComments(
             button.dataset.id
-          )
+          );
 
+    }
   );
-
 
   document
   .querySelectorAll(
     '.shareBtn'
   )
   .forEach(
-
-    button =>
+    button => {
 
       button.onclick =
         () =>
           shareVideo(
             button.dataset.id
-          )
+          );
 
+    }
   );
-
 
   document
   .querySelectorAll(
     '.moreBtn'
   )
   .forEach(
-
-    button =>
+    button => {
 
       button.onclick =
         () =>
           openVideoMenu(
             button.dataset.id
-          )
+          );
 
+    }
   );
-
 
   document
   .querySelectorAll(
     '.creatorLink'
   )
   .forEach(
-
-    button =>
+    button => {
 
       button.onclick =
         () =>
           openCreator(
             button.dataset.creator
-          )
+          );
 
+    }
   );
 
 }
 
 
-/* ======================
-   LIKES / SAVES
-====================== */
-
+/* =========================
+   LIKE
+========================= */
 
 async function toggleLike(
   id,
@@ -3473,42 +2671,24 @@ async function toggleLike(
 
   await ensureFreshSession();
 
-
-  if(
-    likes.has(id)
-  ){
+  if(likes.has(id)){
 
     const response =
       await fetch(
-
         URL +
-
         `/rest/v1/likes?user_id=eq.${user.id}&video_id=eq.${id}`,
-
         {
-
-          method:
-            'DELETE',
-
-          headers:
-            headers()
-
+          method:'DELETE',
+          headers:headers()
         }
-
       );
 
-
-    if(
-      response.ok
-    ){
+    if(response.ok){
 
       likes.delete(id);
 
-
       button
-      .querySelector(
-        '.icon'
-      )
+      .querySelector('.icon')
       .textContent =
         '♡';
 
@@ -3520,62 +2700,39 @@ async function toggleLike(
 
     const response =
       await fetch(
-
         URL +
         '/rest/v1/likes',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:
             headers({
-
               'Content-Type':
                 'application/json'
-
             }),
 
           body:
             JSON.stringify({
-
-              user_id:
-                user.id,
-
-              video_id:
-                id
-
+              user_id:user.id,
+              video_id:id
             })
-
         }
-
       );
 
-
-    if(
-      response.ok
-    ){
+    if(response.ok){
 
       likes.add(id);
 
-
       button
-      .querySelector(
-        '.icon'
-      )
+      .querySelector('.icon')
       .textContent =
         '♥';
 
-
       await recordSignal(
-
         id,
-
         {
           liked:true
         }
-
       );
 
     }
@@ -3585,6 +2742,9 @@ async function toggleLike(
 }
 
 
+/* =========================
+   SAVE
+========================= */
 
 async function toggleSave(
   id,
@@ -3593,42 +2753,24 @@ async function toggleSave(
 
   await ensureFreshSession();
 
-
-  if(
-    saves.has(id)
-  ){
+  if(saves.has(id)){
 
     const response =
       await fetch(
-
         URL +
-
         `/rest/v1/saves?user_id=eq.${user.id}&video_id=eq.${id}`,
-
         {
-
-          method:
-            'DELETE',
-
-          headers:
-            headers()
-
+          method:'DELETE',
+          headers:headers()
         }
-
       );
 
-
-    if(
-      response.ok
-    ){
+    if(response.ok){
 
       saves.delete(id);
 
-
       button
-      .querySelector(
-        '.icon'
-      )
+      .querySelector('.icon')
       .textContent =
         '⌑';
 
@@ -3640,53 +2782,33 @@ async function toggleSave(
 
     const response =
       await fetch(
-
         URL +
         '/rest/v1/saves',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:
             headers({
-
               'Content-Type':
                 'application/json'
-
             }),
 
           body:
             JSON.stringify({
-
-              user_id:
-                user.id,
-
-              video_id:
-                id
-
+              user_id:user.id,
+              video_id:id
             })
-
         }
-
       );
 
-
-    if(
-      response.ok
-    ){
+    if(response.ok){
 
       saves.add(id);
 
-
       button
-      .querySelector(
-        '.icon'
-      )
+      .querySelector('.icon')
       .textContent =
         '▣';
-
 
       toast(
         'Saved'
@@ -3699,62 +2821,40 @@ async function toggleSave(
 }
 
 
-/* ======================
-   SHARES
-====================== */
+/* =========================
+   SHARE
+========================= */
 
-
-async function shareVideo(
-  id
-){
+async function shareVideo(id){
 
   await ensureFreshSession();
 
-
   await fetch(
-
     URL +
     '/rest/v1/shares',
-
     {
-
-      method:
-        'POST',
+      method:'POST',
 
       headers:
         headers({
-
           'Content-Type':
             'application/json'
-
         }),
 
       body:
         JSON.stringify({
-
-          user_id:
-            user.id,
-
-          video_id:
-            id
-
+          user_id:user.id,
+          video_id:id
         })
-
     }
-
   );
 
-
   await recordSignal(
-
     id,
-
     {
       shared:true
     }
-
   );
-
 
   const video =
     fyp.find(
@@ -3762,26 +2862,17 @@ async function shareVideo(
         item.id === id
     );
 
-
   try{
 
-    if(
-      navigator.share
-    ){
+    if(navigator.share){
 
       await navigator.share({
-
-        title:
-          'Veya',
-
+        title:'Veya',
         text:
           video?.caption
           ||
           'Watch this on Veya',
-
-        url:
-          location.href
-
+        url:location.href
       });
 
     }
@@ -3798,182 +2889,120 @@ async function shareVideo(
 
   }
 
-  catch(
-    error
-  ){}
+  catch(error){}
 
 }
 
 
-/* ======================
-   ALGORITHM EVENTS
-====================== */
-
+/* =========================
+   ALGORITHM SIGNALS
+========================= */
 
 async function recordSignal(
-
   video_id,
-
   flags={},
-
   watch_seconds=0,
-
   completion_percent=0
-
 ){
 
   await ensureFreshSession();
 
-
-  const body = {
-
-    user_id:
-      user.id,
-
-    video_id,
-
-    watch_seconds,
-
-    completion_percent,
-
-    shared:false,
-
-    rewatched:false,
-
-    liked:false,
-
-    followed_creator:false,
-
-    commented:false,
-
-    fast_skipped:false,
-
-    ...flags
-
-  };
-
+  if(!user){
+    return;
+  }
 
   await fetch(
-
     URL +
     '/rest/v1/video_events',
-
     {
-
-      method:
-        'POST',
+      method:'POST',
 
       headers:
         headers({
-
           'Content-Type':
             'application/json'
-
         }),
 
       body:
-        JSON.stringify(
-          body
-        )
-
+        JSON.stringify({
+          user_id:user.id,
+          video_id,
+          watch_seconds,
+          completion_percent,
+          shared:false,
+          rewatched:false,
+          liked:false,
+          followed_creator:false,
+          commented:false,
+          fast_skipped:false,
+          ...flags
+        })
     }
-
   );
 
 }
 
 
-/* ======================
+/* =========================
    COMMENTS
-====================== */
+========================= */
 
-
-async function openComments(
-  id
-){
+async function openComments(id){
 
   await ensureFreshSession();
-
 
   currentCommentVideo =
     id;
 
-
   $('commentsSheet')
     .classList
-    .remove(
-      'hidden'
-    );
-
+    .remove('hidden');
 
   $('commentsList')
     .innerHTML =
-
-    '<div class="muted">Loading...</div>';
-
+      '<div class="muted">Loading...</div>';
 
   const response =
     await fetch(
-
       URL +
-
       `/rest/v1/comments?select=id,body,created_at,profiles(username)&video_id=eq.${id}&order=created_at.asc`,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     );
 
-
-  if(
-    response.ok
-  ){
+  if(response.ok){
 
     const comments =
       await response.json();
 
-
-    $('commentsList')
-      .innerHTML =
-
+    $('commentsList').innerHTML =
       comments.length
-
       ?
-
       comments
       .map(
-
         comment => `
 
-        <div class="commentrow">
+          <div class="commentrow">
 
-        <b>
+            <b>
+              @${esc(
+                comment.profiles?.username
+                ||
+                'user'
+              )}
+            </b>
 
-        @${esc(
-          comment.profiles?.username
-          ||
-          'user'
-        )}
+            <div>
+              ${esc(comment.body)}
+            </div>
 
-        </b>
-
-        <div>
-
-        ${esc(comment.body)}
-
-        </div>
-
-        </div>
+          </div>
 
         `
-
       )
       .join('')
-
       :
-
       '<div class="muted">No comments yet.</div>';
 
   }
@@ -3981,88 +3010,60 @@ async function openComments(
 }
 
 
-
 $('sendComment').onclick =
-  async () =>{
-
+  async () => {
 
     await ensureFreshSession();
-
 
     const body =
       $('commentInput')
       .value
       .trim();
 
-
     if(
       !body ||
       !currentCommentVideo
     ){
-
       return;
-
     }
-
 
     const response =
       await fetch(
-
         URL +
         '/rest/v1/comments',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:
             headers({
-
               'Content-Type':
                 'application/json'
-
             }),
 
           body:
             JSON.stringify({
-
-              user_id:
-                user.id,
-
+              user_id:user.id,
               video_id:
                 currentCommentVideo,
-
               body
-
             })
-
         }
-
       );
 
-
-    if(
-      response.ok
-    ){
+    if(response.ok){
 
       $('commentInput')
         .value =
-        '';
-
+          '';
 
       await recordSignal(
-
         currentCommentVideo,
-
         {
           commented:true
         }
-
       );
 
-
-      openComments(
+      await openComments(
         currentCommentVideo
       );
 
@@ -4071,21 +3072,15 @@ $('sendComment').onclick =
   };
 
 
-/* ======================
-   CREATOR PROFILES
-====================== */
+/* =========================
+   CREATOR PROFILE
+========================= */
 
-
-async function openCreator(
-  id
-){
+async function openCreator(id){
 
   await ensureFreshSession();
 
-
-  if(
-    id === user.id
-  ){
+  if(id === user.id){
 
     showPanel(
       'profile'
@@ -4095,137 +3090,107 @@ async function openCreator(
 
   }
 
+  currentCreatorID =
+    id;
 
   const profileResponse =
     await fetch(
-
       URL +
-
       `/rest/v1/profiles?select=id,username,display_name,avatar_url&id=eq.${id}`,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     );
 
-
   const profiles =
-
     profileResponse.ok
-
       ? await profileResponse.json()
-
       : [];
-
 
   const profile =
     profiles[0];
 
-
-  if(
-    !profile
-  ){
-
+  if(!profile){
     return;
-
   }
 
+  const username =
+    profile.username
+    ||
+    'creator';
 
   $('creatorName')
     .textContent =
-
-    '@'
-    +
-    (
-      profile.username
-      ||
-      'creator'
-    );
-
+      '@' + username;
 
   $('creatorAvatar')
     .textContent =
-
-    (
-      profile.username
-      ||
-      'C'
-    )[0]
-    .toUpperCase();
-
+      username[0]
+      .toUpperCase();
 
   $('creatorFollow')
     .textContent =
-
-    follows.has(id)
-
-      ? 'Following'
-
-      : 'Follow';
-
+      follows.has(id)
+      ?
+      'Following'
+      :
+      'Follow';
 
   $('creatorFollow').onclick =
     () =>
       toggleFollow(id);
 
+  $('creatorMessage').onclick =
+    () =>
+      startConversation(
+        id,
+        username
+      );
 
   const videosResponse =
     await fetch(
-
       URL +
-
-      `/rest/v1/videos?select=id,video_url,is_pinned,pinned_at,moderation_status&creator_id=eq.${id}&moderation_status=eq.approved&order=is_pinned.desc,pinned_at.desc,created_at.desc`,
-
+      `/rest/v1/videos?select=id,video_url,is_pinned,pinned_at,moderation_status,created_at&creator_id=eq.${id}&moderation_status=eq.approved&order=is_pinned.desc,pinned_at.desc,created_at.desc`,
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     );
 
-
   const posts =
-
     videosResponse.ok
-
       ? await videosResponse.json()
-
       : [];
 
-
-  $('creatorGrid')
-    .innerHTML =
-
+  $('creatorGrid').innerHTML =
+    posts.length
+    ?
     posts
     .map(
-
       video => `
 
-      <div class="tile">
+        <div class="tile">
 
-      <video
-      src="${esc(video.video_url)}"
-      muted
-      playsinline>
-      </video>
+          <video
+          src="${esc(video.video_url)}"
+          muted
+          playsinline>
+          </video>
 
-      ${
-        video.is_pinned
+          ${
+            video.is_pinned
+            ?
+            '<div class="pinTag">📌 Pinned</div>'
+            :
+            ''
+          }
 
-        ? '<div class="pinTag">📌 Pinned</div>'
-
-        : ''
-      }
-
-      </div>
+        </div>
 
       `
-
     )
-    .join('');
-
+    .join('')
+    :
+    '<div class="muted" style="grid-column:1/-1;padding:30px;text-align:center">No public posts yet.</div>';
 
   showPanel(
     'creator'
@@ -4234,48 +3199,33 @@ async function openCreator(
 }
 
 
+/* =========================
+   FOLLOW
+========================= */
 
-async function toggleFollow(
-  id
-){
+async function toggleFollow(id){
 
   await ensureFreshSession();
 
-
-  if(
-    follows.has(id)
-  ){
+  if(follows.has(id)){
 
     const response =
       await fetch(
-
         URL +
-
         `/rest/v1/follows?follower_id=eq.${user.id}&following_id=eq.${id}`,
-
         {
-
-          method:
-            'DELETE',
-
-          headers:
-            headers()
-
+          method:'DELETE',
+          headers:headers()
         }
-
       );
 
-
-    if(
-      response.ok
-    ){
+    if(response.ok){
 
       follows.delete(id);
 
-
       $('creatorFollow')
         .textContent =
-        'Follow';
+          'Follow';
 
     }
 
@@ -4285,72 +3235,46 @@ async function toggleFollow(
 
     const response =
       await fetch(
-
         URL +
         '/rest/v1/follows',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:
             headers({
-
               'Content-Type':
                 'application/json'
-
             }),
 
           body:
             JSON.stringify({
-
-              follower_id:
-                user.id,
-
-              following_id:
-                id
-
+              follower_id:user.id,
+              following_id:id
             })
-
         }
-
       );
 
-
-    if(
-      response.ok
-    ){
+    if(response.ok){
 
       follows.add(id);
 
-
       $('creatorFollow')
         .textContent =
-        'Following';
-
+          'Following';
 
       const videoID =
-
         fyp.find(
           video =>
             video.creator_id === id
-        )
-        ?.id;
+        )?.id;
 
-
-      if(
-        videoID
-      ){
+      if(videoID){
 
         await recordSignal(
-
           videoID,
-
           {
             followed_creator:true
           }
-
         );
 
       }
@@ -4362,21 +3286,1058 @@ async function toggleFollow(
 }
 
 
-/* ======================
-   REPORT / BLOCK
-====================== */
+/* =========================
+   MESSAGING
+========================= */
 
-
-function openVideoMenu(
-  id
+async function checkMessageBlock(
+  otherUserID
 ){
+
+  await ensureFreshSession();
+
+  const mine =
+    await fetch(
+      URL +
+      `/rest/v1/blocks?select=blocked_id&blocker_id=eq.${user.id}&blocked_id=eq.${otherUserID}`,
+      {
+        headers:headers()
+      }
+    );
+
+  if(mine.ok){
+
+    const rows =
+      await mine.json();
+
+    if(rows.length){
+      return true;
+    }
+
+  }
+
+  const theirs =
+    await fetch(
+      URL +
+      `/rest/v1/blocks?select=blocker_id&blocker_id=eq.${otherUserID}&blocked_id=eq.${user.id}`,
+      {
+        headers:headers()
+      }
+    );
+
+  if(theirs.ok){
+
+    const rows =
+      await theirs.json();
+
+    if(rows.length){
+      return true;
+    }
+
+  }
+
+  return false;
+
+}
+
+
+async function findConversationWith(
+  otherUserID
+){
+
+  const myMembershipsResponse =
+    await fetch(
+      URL +
+      `/rest/v1/conversation_members?select=conversation_id&user_id=eq.${user.id}`,
+      {
+        headers:headers()
+      }
+    );
+
+  if(!myMembershipsResponse.ok){
+    return null;
+  }
+
+  const myMemberships =
+    await myMembershipsResponse.json();
+
+  const ids =
+    myMemberships
+    .map(
+      item =>
+        item.conversation_id
+    )
+    .filter(Boolean);
+
+  if(!ids.length){
+    return null;
+  }
+
+  const encodedIDs =
+    ids
+    .map(
+      id =>
+        `"${id}"`
+    )
+    .join(',');
+
+  const otherMembershipsResponse =
+    await fetch(
+      URL +
+      `/rest/v1/conversation_members?select=conversation_id&user_id=eq.${otherUserID}&conversation_id=in.(${encodedIDs})`,
+      {
+        headers:headers()
+      }
+    );
+
+  if(!otherMembershipsResponse.ok){
+    return null;
+  }
+
+  const others =
+    await otherMembershipsResponse.json();
+
+  return others[0]
+    ?.conversation_id
+    ||
+    null;
+
+}
+
+
+async function createConversation(
+  otherUserID
+){
+
+  const conversationResponse =
+    await fetch(
+      URL +
+      '/rest/v1/conversations',
+      {
+        method:'POST',
+
+        headers:
+          headers({
+            'Content-Type':
+              'application/json',
+
+            Prefer:
+              'return=representation'
+          }),
+
+        body:'{}'
+      }
+    );
+
+  if(!conversationResponse.ok){
+
+    throw new Error(
+      'Could not create conversation: '
+      +
+      await conversationResponse.text()
+    );
+
+  }
+
+  const created =
+    await conversationResponse.json();
+
+  const conversation =
+    Array.isArray(created)
+      ? created[0]
+      : created;
+
+  if(!conversation?.id){
+
+    throw new Error(
+      'Conversation ID was not returned.'
+    );
+
+  }
+
+  const membersResponse =
+    await fetch(
+      URL +
+      '/rest/v1/conversation_members',
+      {
+        method:'POST',
+
+        headers:
+          headers({
+            'Content-Type':
+              'application/json'
+          }),
+
+        body:
+          JSON.stringify([
+            {
+              conversation_id:
+                conversation.id,
+              user_id:
+                user.id
+            },
+            {
+              conversation_id:
+                conversation.id,
+              user_id:
+                otherUserID
+            }
+          ])
+      }
+    );
+
+  if(!membersResponse.ok){
+
+    throw new Error(
+      'Could not add conversation members: '
+      +
+      await membersResponse.text()
+    );
+
+  }
+
+  return conversation.id;
+
+}
+
+
+async function startConversation(
+  otherUserID,
+  username
+){
+
+  await ensureFreshSession();
+
+  if(
+    !otherUserID ||
+    otherUserID === user.id
+  ){
+    return;
+  }
+
+  $('creatorMessage')
+    .disabled =
+      true;
+
+  try{
+
+    const blocked =
+      await checkMessageBlock(
+        otherUserID
+      );
+
+    if(blocked){
+
+      toast(
+        'Messaging unavailable'
+      );
+
+      return;
+
+    }
+
+    let conversationID =
+      await findConversationWith(
+        otherUserID
+      );
+
+    if(!conversationID){
+
+      conversationID =
+        await createConversation(
+          otherUserID
+        );
+
+    }
+
+    await openChat(
+      conversationID,
+      otherUserID,
+      username
+    );
+
+  }
+
+  catch(error){
+
+    console.log(error);
+
+    alert(
+      error.message
+    );
+
+  }
+
+  finally{
+
+    $('creatorMessage')
+      .disabled =
+        false;
+
+  }
+
+}
+
+
+async function loadChats(){
+
+  await ensureFreshSession();
+
+  $('chatInbox')
+    .innerHTML =
+      '<div class="muted">Loading conversations...</div>';
+
+  try{
+
+    const membershipsResponse =
+      await fetch(
+        URL +
+        `/rest/v1/conversation_members?select=conversation_id&user_id=eq.${user.id}`,
+        {
+          headers:headers()
+        }
+      );
+
+    if(!membershipsResponse.ok){
+
+      throw new Error(
+        await membershipsResponse.text()
+      );
+
+    }
+
+    const memberships =
+      await membershipsResponse.json();
+
+    const conversationIDs =
+      memberships
+      .map(
+        item =>
+          item.conversation_id
+      )
+      .filter(Boolean);
+
+    if(!conversationIDs.length){
+
+      $('chatInbox').innerHTML = `
+
+        <div class="empty">
+
+          <div>
+
+            <b
+            style="
+            color:#fff;
+            font-size:21px;
+            ">
+            No chats yet
+            </b>
+
+            <br><br>
+
+            Open someone's profile and tap
+            <b>Message</b>
+            to start a conversation.
+
+          </div>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+    const encodedIDs =
+      conversationIDs
+      .map(
+        id =>
+          `"${id}"`
+      )
+      .join(',');
+
+    const allMembersResponse =
+      await fetch(
+        URL +
+        `/rest/v1/conversation_members?select=conversation_id,user_id&conversation_id=in.(${encodedIDs})`,
+        {
+          headers:headers()
+        }
+      );
+
+    if(!allMembersResponse.ok){
+
+      throw new Error(
+        await allMembersResponse.text()
+      );
+
+    }
+
+    const allMembers =
+      await allMembersResponse.json();
+
+    const otherIDs =
+      [
+        ...new Set(
+          allMembers
+          .filter(
+            member =>
+              member.user_id !== user.id
+          )
+          .map(
+            member =>
+              member.user_id
+          )
+        )
+      ];
+
+    let profiles = [];
+
+    if(otherIDs.length){
+
+      const encodedUsers =
+        otherIDs
+        .map(
+          id =>
+            `"${id}"`
+        )
+        .join(',');
+
+      const profilesResponse =
+        await fetch(
+          URL +
+          `/rest/v1/profiles?select=id,username,display_name&id=in.(${encodedUsers})`,
+          {
+            headers:headers()
+          }
+        );
+
+      if(profilesResponse.ok){
+
+        profiles =
+          await profilesResponse.json();
+
+      }
+
+    }
+
+    const messagesResponse =
+      await fetch(
+        URL +
+        `/rest/v1/messages?select=id,conversation_id,sender_id,body,created_at&conversation_id=in.(${encodedIDs})&order=created_at.desc`,
+        {
+          headers:headers()
+        }
+      );
+
+    const messages =
+      messagesResponse.ok
+      ?
+      await messagesResponse.json()
+      :
+      [];
+
+    const rows =
+      conversationIDs
+      .map(
+        conversationID => {
+
+          const otherMember =
+            allMembers.find(
+              member =>
+                member.conversation_id
+                ===
+                conversationID
+                &&
+                member.user_id
+                !==
+                user.id
+            );
+
+          const otherProfile =
+            profiles.find(
+              profile =>
+                profile.id
+                ===
+                otherMember?.user_id
+            );
+
+          const latest =
+            messages.find(
+              message =>
+                message.conversation_id
+                ===
+                conversationID
+            );
+
+          return {
+            conversationID,
+            userID:
+              otherMember?.user_id
+              ||
+              null,
+            username:
+              otherProfile?.username
+              ||
+              'Veya user',
+            latest
+          };
+
+        }
+      )
+      .sort(
+        (a,b) => {
+
+          const aTime =
+            a.latest?.created_at
+            ?
+            new Date(
+              a.latest.created_at
+            ).getTime()
+            :
+            0;
+
+          const bTime =
+            b.latest?.created_at
+            ?
+            new Date(
+              b.latest.created_at
+            ).getTime()
+            :
+            0;
+
+          return bTime - aTime;
+
+        }
+      );
+
+    $('chatInbox').innerHTML =
+      rows
+      .map(
+        row => `
+
+          <div
+          class="chatRow"
+          data-chat="${row.conversationID}"
+          data-user="${row.userID || ''}"
+          data-name="${esc(row.username)}">
+
+            <div class="chatAvatar">
+
+              ${esc(
+                row.username[0]
+                ?.toUpperCase()
+                ||
+                'V'
+              )}
+
+            </div>
+
+            <div class="chatInfo">
+
+              <div class="chatName">
+                @${esc(row.username)}
+              </div>
+
+              <div class="chatPreview">
+
+                ${
+                  row.latest
+                  ?
+                  esc(
+                    row.latest.sender_id
+                    ===
+                    user.id
+                    ?
+                    'You: '
+                    +
+                    row.latest.body
+                    :
+                    row.latest.body
+                  )
+                  :
+                  'Start the conversation'
+                }
+
+              </div>
+
+            </div>
+
+            <div class="chatTime">
+
+              ${
+                row.latest
+                ?
+                esc(
+                  formatTime(
+                    row.latest.created_at
+                  )
+                )
+                :
+                ''
+              }
+
+            </div>
+
+          </div>
+
+        `
+      )
+      .join('');
+
+    document
+    .querySelectorAll(
+      '[data-chat]'
+    )
+    .forEach(
+      row => {
+
+        row.onclick =
+          () =>
+            openChat(
+              row.dataset.chat,
+              row.dataset.user,
+              row.dataset.name
+            );
+
+      }
+    );
+
+  }
+
+  catch(error){
+
+    console.log(
+      'Inbox error',
+      error
+    );
+
+    $('chatInbox').innerHTML = `
+
+      <div class="card">
+
+        <b>
+        Chats could not load
+        </b>
+
+        <div
+        class="muted"
+        style="margin-top:8px">
+
+          ${esc(error.message)}
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+async function openChat(
+  conversationID,
+  otherUserID,
+  username
+){
+
+  currentConversationID =
+    conversationID;
+
+  currentChatUserID =
+    otherUserID;
+
+  currentChatUsername =
+    username
+    ||
+    'Veya user';
+
+  lastMessageSignature =
+    '';
+
+  hideMainPanels();
+
+  $('chatPanel')
+    .classList
+    .remove('hidden');
+
+  $('chatHeaderName')
+    .textContent =
+      '@'
+      +
+      currentChatUsername;
+
+  $('messages')
+    .innerHTML =
+      '<div class="muted">Loading messages...</div>';
+
+  await loadMessages(
+    true
+  );
+
+  startChatPolling();
+
+}
+
+
+async function loadMessages(
+  forceScroll=false
+){
+
+  if(!currentConversationID){
+    return;
+  }
+
+  await ensureFreshSession();
+
+  const response =
+    await fetch(
+      URL +
+      `/rest/v1/messages?select=id,conversation_id,sender_id,body,created_at&conversation_id=eq.${currentConversationID}&order=created_at.asc`,
+      {
+        headers:headers()
+      }
+    );
+
+  if(!response.ok){
+
+    $('messages')
+      .innerHTML = `
+
+        <div class="muted">
+        Could not load messages.
+        </div>
+
+      `;
+
+    return;
+
+  }
+
+  const messages =
+    await response.json();
+
+  const signature =
+    messages
+    .map(
+      message =>
+        message.id
+        +
+        ':'
+        +
+        message.body
+    )
+    .join('|');
+
+  if(
+    signature === lastMessageSignature
+    &&
+    !forceScroll
+  ){
+    return;
+  }
+
+  lastMessageSignature =
+    signature;
+
+  $('messages').innerHTML =
+    messages.length
+    ?
+    messages
+    .map(
+      message => `
+
+        <div
+        class="messageWrap ${
+          message.sender_id === user.id
+          ?
+          'mine'
+          :
+          ''
+        }">
+
+          <div class="messageBubble">
+
+            <div>
+              ${esc(message.body)}
+            </div>
+
+            <div class="messageTime">
+
+              ${esc(
+                formatTime(
+                  message.created_at
+                )
+              )}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `
+    )
+    .join('')
+    :
+    `
+
+      <div class="empty">
+
+        <div>
+
+          <b
+          style="
+          color:#fff;
+          font-size:20px;
+          ">
+          Start the conversation
+          </b>
+
+          <br><br>
+
+          Send the first message.
+
+        </div>
+
+      </div>
+
+    `;
+
+  if(forceScroll){
+
+    setTimeout(
+      () => {
+
+        $('chatPanel')
+        .scrollTop =
+          $('chatPanel')
+          .scrollHeight;
+
+      },
+      50
+    );
+
+  }
+
+}
+
+
+function startChatPolling(){
+
+  stopChatPolling();
+
+  chatTimer =
+    setInterval(
+      async () => {
+
+        if(
+          !$('chatPanel')
+          .classList
+          .contains('hidden')
+        ){
+
+          await loadMessages(
+            false
+          );
+
+        }
+
+      },
+      3000
+    );
+
+}
+
+
+function stopChatPolling(){
+
+  if(chatTimer){
+
+    clearInterval(
+      chatTimer
+    );
+
+    chatTimer =
+      null;
+
+  }
+
+}
+
+
+$('sendMessage').onclick =
+  async () => {
+
+    const body =
+      $('messageInput')
+      .value
+      .trim();
+
+    if(
+      !body ||
+      !currentConversationID
+    ){
+      return;
+    }
+
+    await ensureFreshSession();
+
+    if(currentChatUserID){
+
+      const blocked =
+        await checkMessageBlock(
+          currentChatUserID
+        );
+
+      if(blocked){
+
+        toast(
+          'Messaging unavailable'
+        );
+
+        return;
+
+      }
+
+    }
+
+    $('sendMessage')
+      .disabled =
+        true;
+
+    try{
+
+      const response =
+        await fetch(
+          URL +
+          '/rest/v1/messages',
+          {
+            method:'POST',
+
+            headers:
+              headers({
+                'Content-Type':
+                  'application/json',
+
+                Prefer:
+                  'return=minimal'
+              }),
+
+            body:
+              JSON.stringify({
+                conversation_id:
+                  currentConversationID,
+
+                sender_id:
+                  user.id,
+
+                body
+              })
+          }
+        );
+
+      if(!response.ok){
+
+        throw new Error(
+          await response.text()
+        );
+
+      }
+
+      $('messageInput')
+        .value =
+          '';
+
+      await loadMessages(
+        true
+      );
+
+    }
+
+    catch(error){
+
+      alert(
+        'Message failed: '
+        +
+        error.message
+      );
+
+    }
+
+    finally{
+
+      $('sendMessage')
+        .disabled =
+          false;
+
+    }
+
+  };
+
+
+$('messageInput')
+.addEventListener(
+  'keydown',
+  event => {
+
+    if(
+      event.key === 'Enter'
+      &&
+      !event.shiftKey
+    ){
+
+      event.preventDefault();
+
+      $('sendMessage').click();
+
+    }
+
+  }
+);
+
+
+$('chatBack').onclick =
+  async () => {
+
+    stopChatPolling();
+
+    currentConversationID =
+      null;
+
+    currentChatUserID =
+      null;
+
+    currentChatUsername =
+      null;
+
+    $('chatPanel')
+      .classList
+      .add('hidden');
+
+    $('chatsPanel')
+      .classList
+      .remove('hidden');
+
+    await loadChats();
+
+  };
+
+
+/* =========================
+   VIDEO MENU
+========================= */
+
+function openVideoMenu(id){
 
   menuVideo =
     fyp.find(
       video =>
         video.id === id
     );
-
 
   if(
     menuVideo?.creator_id
@@ -4386,9 +4347,7 @@ function openVideoMenu(
 
     $('ownMenuSheet')
       .classList
-      .remove(
-        'hidden'
-      );
+      .remove('hidden');
 
   }
 
@@ -4396,95 +4355,68 @@ function openVideoMenu(
 
     $('menuSheet')
       .classList
-      .remove(
-        'hidden'
-      );
+      .remove('hidden');
 
   }
 
 }
 
 
+/* =========================
+   REPORT
+========================= */
 
 $('reportButton').onclick =
-  async () =>{
-
+  async () => {
 
     await ensureFreshSession();
 
-
-    if(
-      !menuVideo
-    ){
-
+    if(!menuVideo){
       return;
-
     }
-
 
     const reason =
       prompt(
-
         'Why are you reporting this video? Example: nudity, harassment, spam'
-
       );
 
-
-    if(
-      !reason
-    ){
-
+    if(!reason){
       return;
-
     }
-
 
     const response =
       await fetch(
-
         URL +
         '/rest/v1/reports',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:
             headers({
-
               'Content-Type':
                 'application/json'
-
             }),
 
           body:
             JSON.stringify({
-
               reporter_id:
                 user.id,
-
               video_id:
                 menuVideo.id,
-
               reason
-
             })
-
         }
-
       );
 
-
     if(
-      response.ok ||
+      response.ok
+      ||
       response.status === 409
     ){
 
       toast(
         'Report received'
       );
-
 
       closeSheets();
 
@@ -4493,13 +4425,14 @@ $('reportButton').onclick =
   };
 
 
+/* =========================
+   BLOCK
+========================= */
 
 $('blockButton').onclick =
-  async () =>{
-
+  async () => {
 
     await ensureFreshSession();
-
 
     if(
       !menuVideo
@@ -4508,49 +4441,35 @@ $('blockButton').onclick =
         'Block this creator? Their posts will be removed from your FYP.'
       )
     ){
-
       return;
-
     }
-
 
     const response =
       await fetch(
-
         URL +
         '/rest/v1/blocks',
-
         {
-
-          method:
-            'POST',
+          method:'POST',
 
           headers:
             headers({
-
               'Content-Type':
                 'application/json'
-
             }),
 
           body:
             JSON.stringify({
-
               blocker_id:
                 user.id,
-
               blocked_id:
                 menuVideo.creator_id
-
             })
-
         }
-
       );
 
-
     if(
-      response.ok ||
+      response.ok
+      ||
       response.status === 409
     ){
 
@@ -4558,9 +4477,7 @@ $('blockButton').onclick =
         'Creator blocked'
       );
 
-
       closeSheets();
-
 
       await loadFyp();
 
@@ -4569,210 +4486,142 @@ $('blockButton').onclick =
   };
 
 
-/* ======================
+/* =========================
    OWN PROFILE
-====================== */
-
+========================= */
 
 async function loadOwnProfile(){
 
   await ensureFreshSession();
 
-
   const response =
     await fetch(
-
       URL +
-
       `/rest/v1/videos?select=id,video_url,caption,is_pinned,pinned_at,moderation_status,created_at&creator_id=eq.${user.id}&order=is_pinned.desc,pinned_at.desc,created_at.desc`,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     );
 
-
   ownPosts =
-
     response.ok
-
       ? await response.json()
-
       : [];
-
 
   $('postsCount')
     .textContent =
-    ownPosts.length;
-
+      ownPosts.length;
 
   const [
-
     followersResponse,
-
     followingResponse
-
   ] =
-
   await Promise.all([
 
-
     fetch(
-
       URL +
-
       `/rest/v1/follows?select=follower_id&following_id=eq.${user.id}`,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     ),
 
-
     fetch(
-
       URL +
-
       `/rest/v1/follows?select=following_id&follower_id=eq.${user.id}`,
-
       {
-        headers:
-          headers()
+        headers:headers()
       }
-
     )
-
 
   ]);
 
-
-  if(
-    followersResponse.ok
-  ){
+  if(followersResponse.ok){
 
     $('followersCount')
       .textContent =
-
-      (
-        await followersResponse.json()
-      )
-      .length;
+        (
+          await followersResponse.json()
+        ).length;
 
   }
 
-
-  if(
-    followingResponse.ok
-  ){
+  if(followingResponse.ok){
 
     $('followingCount')
       .textContent =
-
-      (
-        await followingResponse.json()
-      )
-      .length;
+        (
+          await followingResponse.json()
+        ).length;
 
   }
 
-
-  $('profileGrid')
-    .innerHTML =
-
+  $('profileGrid').innerHTML =
     ownPosts
     .map(
-
       video => `
-
 
       <div class="tile">
 
+        <video
+        src="${esc(video.video_url)}"
+        muted
+        playsinline>
+        </video>
 
-      <video
+        ${
+          video.is_pinned
+          ?
+          '<div class="pinTag">📌 Pinned</div>'
+          :
+          ''
+        }
 
-      src="${esc(video.video_url)}"
+        ${
+          video.moderation_status !==
+          'approved'
+          ?
+          `
+          <div class="pendingTag">
+          ${esc(video.moderation_status)}
+          </div>
+          `
+          :
+          ''
+        }
 
-      muted
-
-      playsinline>
-
-      </video>
-
-
-      ${
-        video.is_pinned
-
-        ? '<div class="pinTag">📌 Pinned</div>'
-
-        : ''
-      }
-
-
-      ${
-        video.moderation_status !==
-        'approved'
-
-        ?
-
-        `<div class="pendingTag">
-
-        ${esc(video.moderation_status)}
-
-        </div>`
-
-        :
-
-        ''
-      }
-
-
-      <button
-
-      class="tilemenu"
-
-      data-own="${video.id}">
-
-      •••
-
-      </button>
-
+        <button
+        class="tilemenu"
+        data-own="${video.id}">
+        •••
+        </button>
 
       </div>
 
-
       `
-
     )
     .join('');
-
 
   document
   .querySelectorAll(
     '[data-own]'
   )
   .forEach(
-
-    button =>
+    button => {
 
       button.onclick =
         () =>
           ownVideoMenu(
             button.dataset.own
-          )
+          );
 
+    }
   );
 
 }
 
 
-
-function ownVideoMenu(
-  id
-){
+function ownVideoMenu(id){
 
   const video =
     ownPosts.find(
@@ -4780,164 +4629,114 @@ function ownVideoMenu(
         item.id === id
     );
 
-
-  if(
-    !video
-  ){
-
+  if(!video){
     return;
-
   }
-
 
   $('pinButton')
     .textContent =
-
-    video.is_pinned
-
-      ? 'Unpin from profile'
-
-      : 'Pin to profile';
-
+      video.is_pinned
+      ?
+      'Unpin from profile'
+      :
+      'Pin to profile';
 
   $('pinButton').onclick =
-    async () =>{
-
+    async () => {
 
       await ensureFreshSession();
 
-
       const response =
         await fetch(
-
           URL +
           '/rest/v1/rpc/set_video_pin',
-
           {
-
-            method:
-              'POST',
+            method:'POST',
 
             headers:
               headers({
-
                 'Content-Type':
                   'application/json'
-
               }),
 
             body:
               JSON.stringify({
-
-                p_video_id:
-                  id,
-
+                p_video_id:id,
                 p_pinned:
                   !video.is_pinned
-
               })
-
           }
-
         );
 
-
-      if(
-        !response.ok
-      ){
+      if(!response.ok){
 
         const error =
           await response.text();
 
-
         toast(
-
           error.includes(
             '3 videos'
           )
-
-          ? 'Maximum 3 pins'
-
-          : 'Could not update pin'
-
+          ?
+          'Maximum 3 pins'
+          :
+          'Could not update pin'
         );
-
 
         return;
 
       }
 
-
       toast(
-
         video.is_pinned
-
-          ? 'Unpinned'
-
-          : 'Pinned'
-
+        ?
+        'Unpinned'
+        :
+        'Pinned'
       );
 
-
       closeSheets();
-
 
       await loadOwnProfile();
 
     };
 
-
   $('ownMenuSheet')
     .classList
-    .remove(
-      'hidden'
-    );
+    .remove('hidden');
 
 }
 
 
-/* ======================
+/* =========================
    WATCH TRACKING
-====================== */
-
+========================= */
 
 const observer =
   new IntersectionObserver(
-
-    entries =>{
-
+    entries => {
 
       entries.forEach(
-
-        entry =>{
-
+        entry => {
 
           const slide =
             entry.target;
-
 
           const video =
             slide.querySelector(
               'video'
             );
 
-
           if(
-
             entry.isIntersecting
-
             &&
-
             entry.intersectionRatio > .72
-
           ){
-
 
             const newIndex =
               Number(
                 slide.dataset.index
               );
-
 
             if(
               newIndex !== currentIndex
@@ -4947,16 +4746,13 @@ const observer =
                 currentIndex
               );
 
-
               currentIndex =
                 newIndex;
-
 
               enteredAt =
                 Date.now();
 
             }
-
 
             video
             .play()
@@ -4964,31 +4760,23 @@ const observer =
               () => {}
             );
 
-
             const id =
               slide.dataset.id;
-
 
             if(
               seenSession.has(id)
             ){
 
               recordSignal(
-
                 id,
-
                 {
                   rewatched:true
                 }
-
               );
 
             }
 
-
-            seenSession.add(
-              id
-            );
+            seenSession.add(id);
 
           }
 
@@ -4999,19 +4787,13 @@ const observer =
           }
 
         }
-
       );
 
     },
-
     {
-      threshold:[
-        .72
-      ]
+      threshold:[.72]
     }
-
   );
-
 
 
 function observeSlides(){
@@ -5021,133 +4803,86 @@ function observeSlides(){
     '.slide'
   )
   .forEach(
-
     slide =>
-
       observer.observe(
         slide
       )
-
   );
 
 }
 
 
+async function recordExit(index){
 
-async function recordExit(
-  index
-){
-
-  if(
-    !user
-  ){
-
+  if(!user){
     return;
-
   }
-
 
   const slide =
     document.querySelector(
-
       `.slide[data-index="${index}"]`
-
     );
 
-
-  if(
-    !slide
-  ){
-
+  if(!slide){
     return;
-
   }
-
 
   const video =
     slide.querySelector(
       'video'
     );
 
-
   const id =
     slide.dataset.id;
 
-
   const elapsed =
-
     (
       Date.now()
       -
       enteredAt
     )
-
     /
-
     1000;
 
-
   const duration =
-
     Number.isFinite(
       video.duration
     )
-
     &&
-
     video.duration > 0
-
-      ? video.duration
-
-      : Math.max(
-          elapsed,
-          1
-        );
-
+    ?
+    video.duration
+    :
+    Math.max(
+      elapsed,
+      1
+    );
 
   const completion =
-
     Math.min(
-
       1,
-
       Math.max(
-
         0,
-
         video.currentTime
         /
         duration
-
       )
-
     );
 
-
   const fastSkip =
-
     elapsed < 3
-
     &&
-
     completion < .1;
 
-
   await recordSignal(
-
     id,
-
     {
       fast_skipped:
         fastSkip
     },
-
     elapsed,
-
     completion
-
   );
-
 
   if(
     fyp[index]
@@ -5156,30 +4891,20 @@ async function recordExit(
 
     await ensureFreshSession();
 
-
     await fetch(
-
       URL +
       '/rest/v1/rpc/mark_welcome_seen',
-
       {
-
-        method:
-          'POST',
+        method:'POST',
 
         headers:
           headers({
-
             'Content-Type':
               'application/json'
-
           }),
 
-        body:
-          '{}'
-
+        body:'{}'
       }
-
     );
 
   }
@@ -5187,67 +4912,46 @@ async function recordExit(
 }
 
 
-/* ======================
+/* =========================
    VIDEO UPLOAD
-====================== */
-
+========================= */
 
 $('videoFile').onchange =
-  () =>{
-
+  () => {
 
     selectedFile =
       $('videoFile')
       .files?.[0]
-
       ||
-
       null;
 
-
-    if(
-      !selectedFile
-    ){
-
+    if(!selectedFile){
       return;
-
     }
 
-
-    $('preview')
-      .src =
-
-      URL.createObjectURL(
+    $('preview').src =
+      window.URL.createObjectURL(
         selectedFile
       );
-
 
     $('preview')
       .style
       .display =
-      'block';
-
+        'block';
 
     $('uploadStatus')
       .textContent =
-
-      'Selected: '
-
-      +
-
-      selectedFile.name;
+        'Selected: '
+        +
+        selectedFile.name;
 
   };
 
 
-
 $('uploadButton').onclick =
-  async () =>{
+  async () => {
 
-
-    if(
-      !selectedFile
-    ){
+    if(!selectedFile){
 
       return toast(
         'Choose a video first'
@@ -5255,28 +4959,21 @@ $('uploadButton').onclick =
 
     }
 
-
     if(
       !$('safetyCheck')
       .checked
     ){
 
       return toast(
-
         'Confirm the no-nudity rule first'
-
       );
 
     }
 
-
     const fresh =
       await ensureFreshSession();
 
-
-    if(
-      !fresh
-    ){
+    if(!fresh){
 
       toast(
         'Please log in again'
@@ -5286,161 +4983,106 @@ $('uploadButton').onclick =
 
     }
 
-
     $('uploadButton')
       .disabled =
-      true;
-
+        true;
 
     $('bar')
       .style
       .width =
-      '20%';
-
+        '20%';
 
     try{
 
-
       const extension =
-
         (
           selectedFile.name
           .split('.')
           .pop()
-
           ||
-
           'mp4'
         )
-
         .replace(
           /[^a-z0-9]/gi,
           ''
         )
-
         .toLowerCase()
-
         ||
-
         'mp4';
 
-
       const name =
-
         Date.now()
-
         +
-
         '-'
-
         +
-
         Math.random()
         .toString(36)
         .slice(2)
-
         +
-
         '.'
-
         +
-
         extension;
-
 
       const upload =
         await fetch(
-
           URL +
-
           `/storage/v1/object/videos/${encodeURIComponent(user.id)}/${encodeURIComponent(name)}`,
-
           {
-
-            method:
-              'POST',
+            method:'POST',
 
             headers:
               headers({
-
                 'Content-Type':
-
                   selectedFile.type
-
                   ||
-
                   'video/mp4',
 
                 'x-upsert':
                   'false'
-
               }),
 
-            body:
-              selectedFile
-
+            body:selectedFile
           }
-
         );
 
-
-      if(
-        !upload.ok
-      ){
+      if(!upload.ok){
 
         throw new Error(
-
           'Upload failed: '
-
           +
-
           await upload.text()
-
         );
 
       }
 
-
       $('bar')
         .style
         .width =
-        '65%';
-
+          '65%';
 
       const publicURL =
-
         URL
-
         +
-
         `/storage/v1/object/public/videos/${user.id}/${name}`;
-
 
       const post =
         await fetch(
-
           URL +
           '/rest/v1/videos',
-
           {
-
-            method:
-              'POST',
+            method:'POST',
 
             headers:
               headers({
-
                 'Content-Type':
                   'application/json',
 
                 Prefer:
                   'return=representation'
-
               }),
 
             body:
               JSON.stringify({
-
                 creator_id:
                   user.id,
 
@@ -5451,98 +5093,72 @@ $('uploadButton').onclick =
                   $('caption')
                   .value
                   .trim()
-
               })
-
           }
-
         );
 
-
-      if(
-        !post.ok
-      ){
+      if(!post.ok){
 
         throw new Error(
-
           'Post creation failed: '
-
           +
-
           await post.text()
-
         );
 
       }
 
-
       $('bar')
         .style
         .width =
-        '100%';
-
+          '100%';
 
       $('uploadStatus')
         .textContent =
-
-        'Uploaded. Pending safety review — not public yet.';
-
+          'Uploaded. Pending safety review — not public yet.';
 
       toast(
         'Uploaded for review'
       );
 
-
       selectedFile =
         null;
 
-
       $('videoFile')
         .value =
-        '';
-
+          '';
 
       $('caption')
         .value =
-        '';
-
+          '';
 
       $('safetyCheck')
         .checked =
-        false;
-
+          false;
 
       $('preview')
         .removeAttribute(
           'src'
         );
 
-
       $('preview')
         .style
         .display =
-        'none';
-
+          'none';
 
       await loadOwnProfile();
 
-
     }
 
-    catch(
-      error
-    ){
-
+    catch(error){
 
       $('uploadStatus')
         .textContent =
-        error.message;
-
+          error.message;
 
       $('bar')
         .style
         .width =
-        '0%';
+          '0%';
 
     }
 
@@ -5550,86 +5166,60 @@ $('uploadButton').onclick =
 
       $('uploadButton')
         .disabled =
-        false;
+          false;
 
     }
 
   };
 
 
-/* ======================
-   PANELS
-====================== */
+/* =========================
+   PANELS / NAV
+========================= */
 
+function showPanel(panel){
 
-function showPanel(
-  panel
-){
+  stopChatPolling();
 
-  [
+  hideMainPanels();
 
-    'chatsPanel',
-    'postPanel',
-    'profilePanel',
-    'creatorPanel'
-
-  ]
-  .forEach(
-
-    id =>
-
-      $(id)
-      .classList
-      .add(
-        'hidden'
-      )
-
-  );
-
-
-  if(
-    panel === 'chats'
-  ){
+  if(panel === 'chats'){
 
     $('chatsPanel')
       .classList
-      .remove(
-        'hidden'
-      );
+      .remove('hidden');
+
+    loadChats();
 
   }
 
-
-  if(
-    panel === 'post'
-  ){
+  if(panel === 'post'){
 
     $('postPanel')
       .classList
-      .remove(
-        'hidden'
-      );
+      .remove('hidden');
 
   }
 
-
-  if(
-    panel === 'profile'
-  ){
-
-    loadOwnProfile();
-
+  if(panel === 'profile'){
 
     $('profilePanel')
       .classList
-      .remove(
-        'hidden'
-      );
+      .remove('hidden');
+
+    loadOwnProfile();
+
+  }
+
+  if(panel === 'creator'){
+
+    $('creatorPanel')
+      .classList
+      .remove('hidden');
 
   }
 
 }
-
 
 
 document
@@ -5637,37 +5227,25 @@ document
   '.navbtn'
 )
 .forEach(
-
-  button =>{
-
+  button => {
 
     button.onclick =
-      () =>{
-
+      () => {
 
         document
         .querySelectorAll(
           '.navbtn'
         )
         .forEach(
-
           item =>
-
             item
             .classList
-            .remove(
-              'active'
-            )
-
+            .remove('active')
         );
-
 
         button
         .classList
-        .add(
-          'active'
-        );
-
+        .add('active');
 
         if(
           button.dataset.open
@@ -5675,26 +5253,9 @@ document
           'feed'
         ){
 
-          [
+          stopChatPolling();
 
-            'chatsPanel',
-            'postPanel',
-            'profilePanel',
-            'creatorPanel'
-
-          ]
-
-          .forEach(
-
-            id =>
-
-              $(id)
-              .classList
-              .add(
-                'hidden'
-              )
-
-          );
+          hideMainPanels();
 
         }
 
@@ -5709,9 +5270,7 @@ document
       };
 
   }
-
 );
-
 
 
 document
@@ -5719,63 +5278,41 @@ document
   '[data-close]'
 )
 .forEach(
-
-  button =>
+  button => {
 
     button.onclick =
-      () =>{
+      () => {
 
-        [
+        stopChatPolling();
 
-          'chatsPanel',
-          'postPanel',
-          'profilePanel',
-          'creatorPanel'
+        hideMainPanels();
 
-        ]
+      };
 
-        .forEach(
-
-          id =>
-
-            $(id)
-            .classList
-            .add(
-              'hidden'
-            )
-
-        );
-
-      }
-
+  }
 );
 
 
+/* =========================
+   SHEETS
+========================= */
 
 function closeSheets(){
 
   [
-
     'commentsSheet',
     'menuSheet',
     'ownMenuSheet'
-
   ]
-
   .forEach(
-
-    id =>
-
+    id => {
       $(id)
       .classList
-      .add(
-        'hidden'
-      )
-
+      .add('hidden');
+    }
   );
 
 }
-
 
 
 document
@@ -5783,63 +5320,21 @@ document
   '[data-sheet-close]'
 )
 .forEach(
-
-  button =>
+  button => {
 
     button.onclick =
-      closeSheets
+      closeSheets;
 
+  }
 );
 
 
-/* ======================
-   LOGOUT
-====================== */
-
-
-function clearStoredSession(){
-
-  localStorage.removeItem(
-    'veya_user'
-  );
-
-
-  localStorage.removeItem(
-    'veya_token'
-  );
-
-
-  localStorage.removeItem(
-    'veya_refresh_token'
-  );
-
-
-  localStorage.removeItem(
-    'veya_expires_at'
-  );
-
-
-  if(
-    refreshTimer
-  ){
-
-    clearInterval(
-      refreshTimer
-    );
-
-
-    refreshTimer =
-      null;
-
-  }
-
-}
-
-
+/* =========================
+   LOG OUT
+========================= */
 
 $('logoutButton').onclick =
-  async () =>{
-
+  async () => {
 
     try{
 
@@ -5849,98 +5344,68 @@ $('logoutButton').onclick =
 
     }
 
-    catch(
-      error
-    ){}
-
+    catch(error){}
 
     clearStoredSession();
-
 
     location.reload();
 
   };
 
 
-/* ======================
+/* =========================
    START VEYA
-====================== */
-
+========================= */
 
 async function startVeya(){
 
   try{
 
-
     user =
       JSON.parse(
-
         localStorage.getItem(
           'veya_user'
         )
-
         ||
-
         'null'
-
       );
-
 
     token =
       localStorage.getItem(
         'veya_token'
       );
 
-
     if(
       !user ||
       !token
     ){
-
       return;
-
     }
-
 
     const fresh =
       await ensureFreshSession();
 
-
-    if(
-      !fresh
-    ){
+    if(!fresh){
 
       clearStoredSession();
 
-
       authMsg(
-
         'Please log in again to continue.'
-
       );
-
 
       return;
 
     }
 
-
     await openApp();
-
 
   }
 
-  catch(
-    error
-  ){
-
+  catch(error){
 
     console.log(
-
       'Veya startup error:',
-
       error
-
     );
 
   }
@@ -5950,10 +5415,7 @@ async function startVeya(){
 
 startVeya();
 
-
 </script>
 
-
 </body>
-
 </html>
